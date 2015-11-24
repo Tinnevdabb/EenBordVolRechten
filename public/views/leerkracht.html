@@ -1,7 +1,25 @@
 <!-- public/views/nerd.html -->
 
-<div class="jumbotron text-center">
-    <h1>Leerkrachten</h1>
+<div class="page-header">
+            <h1>Leerkracht</h1>
+        </div>
+        <button ng-click="changestate('Home')" class="btn btn-primary">Home</button>
 
-    <p>{{ tagline }}</p>
-</div>
+        <form ng-submit="InlogLeerkracht()" method="post"
+              style="margin-top:30px;">
+
+            <div class="form-group">
+                <input type="text"
+                       class="form-control"
+                       placeholder="Gebruikersnaam"
+                       ng-model="data.gebruikersnaam"></input>
+            </div>
+            <div class="form-group">
+                <input type="text"
+                       class="form-control"
+                       placeholder="Paswoord"
+                       ng-model="data.paswoord"></input>
+            </div>
+            <button type="submit" class="btn btn-primary">Log in</button>
+        </form>
+        <button ng-click="changestate('SignUp')" class="btn btn-primary">Registreer</button>

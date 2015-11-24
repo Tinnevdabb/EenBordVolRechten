@@ -11,7 +11,7 @@
 
         // nerds page that will use the LeerkrachtController
         .when('/leerkrachten', {
-            templateUrl: 'views/leerkracht.html',
+            templateUrl: 'views/InlogLeerkracht.html',
             controller: 'LeerkrachtController'
         });
 

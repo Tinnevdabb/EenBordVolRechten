@@ -39,6 +39,23 @@ app.use(express.static(__dirname + '/public'));
 // routes ==================================================
 require('./app/routes')(app); // configure our routes
 
+/*var mongoose   = require('mongoose');
+var    Leerkracht=mongoose.model('Leerkracht');
+    // create a new user
+    var newUser = Leerkracht({
+      username: 'TimD',
+     firstname : 'Tim',
+     lastname : 'Dams',
+     email : 'Dams@ap.be',
+     password: 'TD123',
+    });
+
+    // save the user
+    newUser.save(function(err) {
+      if (err) throw err;
+
+      console.log('User created!');
+    });*/
 // start app ===============================================
 // startup our app at http://localhost:8080
 app.listen(port);

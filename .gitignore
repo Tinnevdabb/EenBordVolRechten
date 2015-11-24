@@ -66,5 +66,3 @@ packages/
 
 #Test files
 *.testsettings
-
-node_modules

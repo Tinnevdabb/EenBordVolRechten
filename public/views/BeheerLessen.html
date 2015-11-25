@@ -1,0 +1,33 @@
+<div class="page-header" method="post">
+           <h1>Beheer Lessen</h1>
+       </div>
+       <table class="table table-hover">
+         <thead>
+           <tr>
+               <th> Naam</th>
+               <th> Aangemaakt</th>
+               <th> Bewerkt</th>
+               <th colspan="4"> Actie</th>
+           </tr>
+         </thead>
+         <tbody>
+           <tr ng-repeat="x in lessen">
+               <td>{{ x.Naam }}</td>
+               <td>{{ x.Aangemaakt }}</td>
+               <td>{{ x.Bewerkt }}</td>
+               <td>   <button ng-click="" class="glyphicon glyphicon-play"></button> </td>
+                <td>   <button ng-click="bewerkLes(x.Naam)" class="glyphicon glyphicon-pencil"></button> </td>
+                <td>   <button ng-click="" class="glyphicon glyphicon-download-alt"></button> </td>
+                <td>   <button ng-click="deleteLes(x.Naam)" class="glyphicon glyphicon-remove"></button> </td>
+
+           </tr>
+         </tbody>
+         <tfoot>
+           <tr>
+               <td><input type="text" ng-model="naam" /></td>
+               <td><input type="text" ng-model="aangemaakt" /></td>
+               <td><input type="text" ng-model="bewerkt" /></td>
+               <td colspan="4"><button ng-click="addLes()"> Voeg toe</button></td>
+             </tr>
+           </tfoot>
+</table>

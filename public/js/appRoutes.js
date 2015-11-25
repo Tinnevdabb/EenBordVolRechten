@@ -23,6 +23,11 @@
         .when('/InlogLeerling', {
             templateUrl: 'views/InlogLeerling.html',
             controller: 'LeerlingController'
+        })
+
+        .when('/BeheerLessen', {
+            templateUrl: 'views/BeheerLessen.html',
+            controller: 'LessenController'
         });
 
     $locationProvider.html5Mode(true);

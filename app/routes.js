@@ -1,9 +1,8 @@
 // app/routes.js
-
 // grab the leerkracht model we just created
 var Leerkracht = require('./models/leerkracht');
 
-    module.exports = function(app, passport) {
+    module.exports = function(app) {
 
         // server routes ===========================================================
         // handle things like api calls
@@ -12,7 +11,7 @@ var Leerkracht = require('./models/leerkracht');
         // sample api route
         app.get('/api/leerkrachten', function(req, res) {
             // use mongoose to get all leerkrachten in the database
-            Leerkracht.find(function(err, leerkrachten) {
+            leerkrachten.find(function(err, leerkrachten) {
 
                 // if there is an error retrieving, send the error.
                                 // nothing after res.send(err) will execute
@@ -22,6 +21,21 @@ var Leerkracht = require('./models/leerkracht');
                 res.json(leerkrachten); // return all nerds in JSON format
             });
         });
+
+        app.post('/SignUp', function (req, res, next) {
+            var leerkracht = new Leerkracht({
+              firstname: req.body.firstname,
+              lastname: req.body.lastname,
+              email : req.body.email,
+              password: req.body.password,
+            })
+            leerkracht.save(function (err, leerkracht) {
+              if (err) { return next(err) }
+              res.json(201, leerkracht)
+              //res.sendfile('./public/views/InlogLeerkracht.html')
+            })
+
+          })
 
         // route to handle creating goes here (app.post)
         // route to handle delete goes here (app.delete)

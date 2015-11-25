@@ -17,7 +17,7 @@
                <th> Naam</th>
                <th> Aangemaakt</th>
                <th> Bewerkt</th>
-               <th colspan="4"> Actie</th>
+               <th > Actie</th>
            </tr>
          </thead>
          <tbody>
@@ -25,10 +25,22 @@
                <td>{{ x.Naam }}</td>
                <td>{{ x.Aangemaakt }}</td>
                <td>{{ x.Bewerkt }}</td>
-               <td>   <button ng-click="" class="glyphicon glyphicon-play"></button> </td>
-                <td>   <button ng-click="bewerkLes(x.Naam)" class="glyphicon glyphicon-pencil"></button> </td>
-                <td>   <button ng-click="" class="glyphicon glyphicon-download-alt"></button> </td>
-                <td>   <button ng-click="deleteLes(x.Naam)" class="glyphicon glyphicon-remove"></button> </td>
+               <td>
+                   <div class="btn-group btn-group-sm" role="group">
+                     <button ng-click="" class="btn btn-success">
+                   <i class="glyphicon glyphicon-play"> </i>
+                 </button>
+                  <button ng-click="bewerkLes(x.Naam)" class="btn btn-warning">
+                     <i class="glyphicon glyphicon-pencil"> </i>
+                  </button>
+                   <button ng-click="" class="btn btn-info">
+                     <i class="glyphicon glyphicon-download-alt"> </i>
+                  </button>
+                  <button ng-click="deleteLes(x.Naam)" class="btn btn-danger">
+                     <i class="glyphicon glyphicon-remove"> </i>
+                  </button>
+                </div>
+              </td>
 
            </tr>
          </tbody>
@@ -37,7 +49,7 @@
                <td ><input type="text" ng-model="naam" /></td>
                <td></td>
                <td></td>
-               <td colspan="4"><button ng-click="addLes()"> Voeg toe</button></td>
+               <td><button ng-click="addLes()"> Voeg toe</button></td>
              </tr>
            </tfoot>
 </table>

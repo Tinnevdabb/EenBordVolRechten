@@ -1,0 +1,14 @@
+
+body{
+  /*background-image: url("/img/Achtergrond.png");*/
+  background-color: #cccccc;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 30px;
+  text-align: center;
+}

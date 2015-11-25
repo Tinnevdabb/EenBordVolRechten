@@ -3,7 +3,7 @@
 // grab the leerkracht model we just created
 var Leerkracht = require('./models/leerkracht');
 
-    module.exports = function(app) {
+    module.exports = function(app, passport) {
 
         // server routes ===========================================================
         // handle things like api calls

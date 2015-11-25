@@ -1,26 +1,46 @@
-<!-- public/views/nerd.html -->
+<section ng-controller="LeerkrachtController">
+  <a href="/"  class="btn btn-default">Home</a>
 
-<div class="page-header">
-            <h1>Leerkracht</h1>
-        </div>
-        <a href="/"  class="btn btn-default">Home</a>
-
+          <h1 class='col-md-12 text-center'>Leerkracht</h1>
+          <div class='col-xs-offset-2 col-xs-8 col-md-offset-4 col-md-4'>
         <form ng-submit="InlogLeerkracht()" method="post"
               style="margin-top:30px;">
+              <fieldset>
+                <div  ng-show="error" class="text-center text-danger">
+                  <strong ng-bind="error"></strong>
+                </div>
 
-            <div class="form-group">
-                <input type="text"
-                       class="form-control"
-                       placeholder="Gebruikersnaam"
-                       ng-model="data.gebruikersnaam"></input>
+                <div class="form-group">
+                  <div class="input-group text-center input-group-lg">
+                     <span class="input-group-addon" id="basic-addon1">
+                        <i class="glyphicon glyphicon-user"></i>
+                     </span>
+                      <input type="text"
+                             class="form-control"
+                             placeholder="Gebruikersnaam"
+                             ng-model="data.gebruikersnaam"></input>
+                  </div>
+                </div>
+
+          <div class="form-group">
+              <div class="input-group text-center input-group-lg">
+                <span class="input-group-addon" id="basic-addon1">
+                   <i class="glyphicon glyphicon-asterisk"></i>
+                </span>
+                  <input type="text"
+                         class="form-control"
+                         placeholder="Paswoord"
+                         ng-model="data.paswoord"></input>
+              </div>
             </div>
-            <div class="form-group">
-                <input type="text"
-                       class="form-control"
-                       placeholder="Paswoord"
-                       ng-model="data.paswoord"></input>
+
+            <div class="form-group text-center">
+              <a href="/BeheerLessen"  class="btn btn-default btn-lg btn-block">Log in</a>
             </div>
-            <!--<button type="submit" class="btn btn-primary">Log in</button>-->
-              <a href="/BeheerLessen"  class="btn btn-default">Log in</a>
+                <a href="/SignUp">Registreer</a>
+            </fieldset>
         </form>
-      <a href="/SignUp"  class="btn btn-default">Registreer</a>
+
+
+</div>
+</section>

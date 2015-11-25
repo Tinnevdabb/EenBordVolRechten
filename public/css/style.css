@@ -12,3 +12,12 @@ body{
   height: 30px;
   text-align: center;
 }
+
+.login-form-bg{
+  background-color: white;
+  border: 15px solid;
+  border-radius: 15px;
+  border-color: white;
+  margin-top: 50px;
+
+}

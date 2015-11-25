@@ -1,6 +1,16 @@
-<div class="page-header" method="post">
-           <h1>Beheer Lessen</h1>
-       </div>
+<nav class="navbar navbar-inverse">
+<div class="container-fluid">
+  <div class="navbar-header">
+     <a class="navbar-brand" href="#">Beheer Lessen</a>
+   </div>
+   <ul class="nav navbar-nav navbar-right">
+<li><a href="#"><span class="glyphicon glyphicon-user"></span> Profiel</a></li>
+<li><a href="/"><span class="glyphicon glyphicon-log-out"></span> Log uit</a></li>
+      </ul>
+    </div>
+</nav>
+
+
        <table class="table table-hover">
          <thead>
            <tr>
@@ -24,9 +34,9 @@
          </tbody>
          <tfoot>
            <tr>
-               <td><input type="text" ng-model="naam" /></td>
-               <td><input type="text" ng-model="aangemaakt" /></td>
-               <td><input type="text" ng-model="bewerkt" /></td>
+               <td ><input type="text" ng-model="naam" /></td>
+               <td></td>
+               <td></td>
                <td colspan="4"><button ng-click="addLes()"> Voeg toe</button></td>
              </tr>
            </tfoot>

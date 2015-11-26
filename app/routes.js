@@ -22,6 +22,7 @@ var Leerkracht = require('./models/leerkracht');
             });
         });
 
+
         app.post('/SignUp', function (req, res, next) {
             var leerkracht = new Leerkracht({
               firstname: req.body.firstname,
@@ -31,8 +32,8 @@ var Leerkracht = require('./models/leerkracht');
             })
             leerkracht.save(function (err, leerkracht) {
               if (err) { return next(err) }
-              res.json(201, leerkracht)
-              //res.sendfile('./public/views/InlogLeerkracht.html')
+              //res.json(201, leerkracht)
+              res.redirect('InlogLeerkracht')
             })
 
           })

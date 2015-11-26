@@ -1,2 +1,2 @@
 // public/js/app.js
-angular.module('EenBordVolRechten', ['ngRoute', 'appRoutes', 'MainCtrl', 'LeerkrachtCtrl','LeerlingCtrl',  'LessenCtrl','SignupCtrl', 'LeerkrachtService']);
+angular.module('EenBordVolRechten', ['ngRoute', 'appRoutes', 'MainCtrl', 'LeerkrachtCtrl','LeerlingCtrl',  'LessenCtrl', 'LeerkrachtService']);

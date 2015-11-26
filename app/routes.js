@@ -24,8 +24,13 @@ var Leerkracht = require('./models/leerkracht');
 
         app.get('/BeheerLessen', isLoggedIn);
 
+        app.post('/logout', function(req, res) {
+        req.logout();
+        res.json({ redirect: '/logout' });
+    });
+
         // show the login form
-  
+
 
           // process the signup form
           app.post('/SignUp', passport.authenticate('local-signup', {
@@ -49,7 +54,7 @@ var Leerkracht = require('./models/leerkracht');
         // frontend routes =========================================================
         // route to handle all angular requests
         app.get('*', function(req, res) {
-            res.render('index'); // load our public/index.html file
+            res.sendfile('./public/views/index.html'); // load our public/index.html file
         });
 
     };

@@ -7,7 +7,7 @@ var Schema = mongoose.Schema,
 var leerkrachtSchema=new Schema({
   firstname : {type : String, required: true,},
   lastname : {type : String, required: true},
-  email : {type : String, required: true, index: { unique: true }},
+  email : {type : String, required: true, index: { unique: true },match: [/.+\@.+\..+/, "Please fill a valid e-mail address"]},
   password: {type: String,required: true}
 
 },{ collection: 'leerkrachten' });
@@ -20,7 +20,7 @@ leerkrachtSchema.methods.generateHash = function(password) {
 
 // checking if password is valid
 leerkrachtSchema.methods.validPassword = function(password) {
-    return bcrypt.compareSync(password, this.local.password);
+    return bcrypt.compareSync(password, this.password);
 };
 
 var Leerkracht = mongoose.model('Leerkracht', leerkrachtSchema);

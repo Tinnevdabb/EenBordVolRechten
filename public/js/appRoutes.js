@@ -5,28 +5,28 @@
 
         // home page
         .when('/', {
-            templateUrl: 'views/home.html',
+            templateUrl: 'views/home.ejs',
             controller: 'MainController'
         })
 
         // nerds page that will use the LeerkrachtController
         .when('/InlogLeerkracht', {
-            templateUrl: 'views/InlogLeerkracht.html',
+            templateUrl: 'views/InlogLeerkracht.ejs',
             controller: 'LeerkrachtController'
         })
 
         .when('/SignUp', {
-            templateUrl: 'views/SignUp.html',
+            templateUrl: 'views/SignUp.ejs',
             controller: 'SignupController'
         })
 
         .when('/InlogLeerling', {
-            templateUrl: 'views/InlogLeerling.html',
+            templateUrl: 'views/InlogLeerling.ejs',
             controller: 'LeerlingController'
         })
 
         .when('/BeheerLessen', {
-            templateUrl: 'views/BeheerLessen.html',
+            templateUrl: 'views/BeheerLessen.ejs',
             controller: 'LessenController'
         });
 

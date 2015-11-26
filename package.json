@@ -11,7 +11,7 @@
     "passport-local" : "~0.1.6",
     "passport-local-mongoose": "^1.0.0",
     "connect-flash" : "~0.1.1",
-    "bcrypt" : "latest",
+    "bcrypt-nodejs" : "latest",
     "cookie-parser": "~1.0.0"
   }
 }

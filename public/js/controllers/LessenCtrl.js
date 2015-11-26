@@ -7,4 +7,11 @@ appLessen.controller('LessenController', ['$scope', function ($scope) {
                              {  Naam: "les 3 tryout", Aangemaakt: "23/02/2015", Bewerkt: "28/02/2015" },
                              { Naam: "les 4 tryout", Aangemaakt: "27/02/2015", Bewerkt: "13/03/2015" },
              ];
+
+             $scope.addLes = function () {
+       $scope.lessen.push({ 'Naam': $scope.naam, 'Aangemaakt': $scope.aangemaakt, 'Bewerkt': $scope.bewerkt });
+       $scope.naam = '';
+       $scope.aangemaakt = '';
+       $scope.bewerkt = '';
+   };
 }]);

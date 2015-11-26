@@ -2,8 +2,7 @@
 // grab the mongoose module
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema,
-    bcrypt = require('bcrypt'),
-    SALT_WORK_FACTOR = 10;
+ bcrypt   = require('bcrypt-nodejs');
 
 var leerkrachtSchema=new Schema({
   firstname : {type : String, required: true,},
@@ -11,34 +10,17 @@ var leerkrachtSchema=new Schema({
   email : {type : String, required: true, index: { unique: true }},
   password: {type: String,required: true}
 
-});
+},{ collection: 'leerkrachten' });
 
-leerkrachtSchema.pre('save', function(next) {
-    var leerkracht = this;
+// methods ======================
+// generating a hash
+leerkrachtSchema.methods.generateHash = function(password) {
+    return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+};
 
-    // only hash the password if it has been modified (or is new)
-    if (!leerkracht.isModified('password')) return next();
-
-    // generate a salt
-    bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt) {
-        if (err) return next(err);
-
-        // hash the password along with our new salt
-        bcrypt.hash(leerkracht.password, salt, function(err, hash) {
-            if (err) return next(err);
-
-            // override the cleartext password with the hashed one
-            leerkracht.password = hash;
-            next();
-        });
-    });
-});
-
-leerkrachtSchema.methods.comparePassword = function(candidatePassword, cb) {
-    bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
-        if (err) return cb(err);
-        cb(null, isMatch);
-    });
+// checking if password is valid
+leerkrachtSchema.methods.validPassword = function(password) {
+    return bcrypt.compareSync(password, this.local.password);
 };
 
 var Leerkracht = mongoose.model('Leerkracht', leerkrachtSchema);

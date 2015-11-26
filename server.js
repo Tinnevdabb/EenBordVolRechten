@@ -9,6 +9,7 @@ var cookieParser = require('cookie-parser');
 var methodOverride = require('method-override');
 var mongoose   = require('mongoose');
 var passport = require('passport');
+
 var flash    = require('connect-flash');
 var Leerkracht     = require('./app/models/leerkracht');
 
@@ -21,28 +22,25 @@ var db = require('./config/db');// config files
 // (uncomment after you enter in your own credentials in config/db.js)
  mongoose.connect(db.url);
 
+ require('./config/passport')(passport); // pass passport for configuration
+ 
+app.use(cookieParser()); // read cookies (needed for auth)
 // get all data/stuff of the body (POST) parameters
 // parse application/json
-app.use(bodyParser.json());
-app.use(cookieParser()); // read cookies (needed for auth)
+app.use(bodyParser.json());// override with the X-HTTP-Method-Override header in the request. simulate DELETE/PUT
+app.use(bodyParser.json({ type: 'application/vnd.api+json' }));// parse application/vnd.api+json as json
+app.use(bodyParser.urlencoded({ extended: true }));// parse application/x-www-form-urlencoded
 
-// parse application/vnd.api+json as json
-app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
-
-// parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: true }));
-
-// override with the X-HTTP-Method-Override header in the request. simulate DELETE/PUT
 app.use(methodOverride('X-HTTP-Method-Override'));
-
-// set the static files location /public/img will be /img for users
-app.use(express.static(__dirname + '/public'));
-
 // required for passport
-app.use(session({ secret: 'ilovescotchscotchyscotchscotch' })); // session secret
+app.use(session({secret: 'supernova', saveUninitialized: true, resave: true}));
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
+
+
+// set the static files location /public/img will be /img for users
+app.use(express.static(__dirname + '/public'));
 
 // routes ==================================================
 require('./app/routes')(app, passport); // configure our routes

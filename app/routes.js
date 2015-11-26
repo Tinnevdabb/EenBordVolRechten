@@ -24,9 +24,9 @@ var Leerkracht = require('./models/leerkracht');
 
         app.get('/BeheerLessen', isLoggedIn);
 
-        app.post('/logout', function(req, res) {
+        app.get('/logout', function(req, res) {
         req.logout();
-        res.json({ redirect: '/logout' });
+        res.redirect('/');
     });
 
         // show the login form

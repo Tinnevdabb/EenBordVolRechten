@@ -3,18 +3,18 @@
 
           <h1 class='col-md-12 text-center'>Leerkracht</h1>
           <div class='col-xs-offset-2 col-xs-8 col-md-offset-4 col-md-4 login-form-bg'>
-        <form ng-submit="InlogLeerkracht()" method="post"
+        <form naction="/InlogLeerkracht" method="post"
               style="margin-top:30px;">
 
                 <div class="form-group">
                   <div class="input-group text-center input-group-lg">
                      <span class="input-group-addon" id="basic-addon1">
-                        <i class="glyphicon glyphicon-user"></i>
+                        <i class="glyphicon glyphicon-envelope"></i>
                      </span>
                       <input type="text"
                              class="form-control"
-                             placeholder="Gebruikersnaam"
-                             ng-model="data.gebruikersnaam"></input>
+                             placeholder="email"
+                             name="email"></input>
                   </div>
                 </div>
 
@@ -26,7 +26,7 @@
                   <input type="text"
                          class="form-control"
                          placeholder="Paswoord"
-                         ng-model="data.paswoord"></input>
+                         name="paswoord"></input>
               </div>
             </div>
 

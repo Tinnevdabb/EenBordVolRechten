@@ -22,28 +22,23 @@ var Leerkracht = require('./models/leerkracht');
             });
         });
 
+        app.get('/BeheerLessen', isLoggedIn);
 
-        /*app.post('/SignUp', function (req, res, next) {
-            var leerkracht = new Leerkracht({
-              firstname: req.body.firstname,
-              lastname: req.body.lastname,
-              email : req.body.email,
-              password: req.body.password,
-            })
-            leerkracht.save(function (err, leerkracht) {
-              if (err) { return next(err) }
-              //res.json(201, leerkracht)
-              res.redirect('InlogLeerkracht')
-            })
-
-          })*/
 
           // process the signup form
-          app.post('/signup', passport.authenticate('local-signup', {
-              successRedirect : '/InlogLeerkracht', // redirect to the secure profile section
-              failureRedirect : '/signup', // redirect back to the signup page if there is an error
+          app.post('/SignUp', passport.authenticate('local-signup', {
+              successRedirect : '/BeheerLessen', // redirect to the secure profile section
+              failureRedirect : '/SignUp', // redirect back to the signup page if there is an error
               failureFlash : true // allow flash messages
           }));
+
+          // process the login form
+          app.post('/InlogLeerkracht', passport.authenticate('local-login', {
+              successRedirect : '/BeheerLessen', // redirect to the secure profile section
+              failureRedirect : '/InlogLeerkracht', // redirect back to the signup page if there is an error
+              failureFlash : true // allow flash messages
+          }));
+
 
 
         // route to handle creating goes here (app.post)
@@ -56,3 +51,14 @@ var Leerkracht = require('./models/leerkracht');
         });
 
     };
+
+    // route middleware to make sure a user is logged in
+function isLoggedIn(req, res, next) {
+
+    // if user is authenticated in the session, carry on
+    if (req.isAuthenticated())
+        return next();
+
+    // if they aren't redirect them to the home page
+    res.redirect('/');
+}

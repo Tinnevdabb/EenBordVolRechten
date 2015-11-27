@@ -2,7 +2,6 @@
 // grab the leerkracht model we just created
 var Leerkracht = require('./models/leerkracht');
 
-
     module.exports = function(app, passport) {
 
         // server routes ===========================================================
@@ -78,14 +77,16 @@ var Leerkracht = require('./models/leerkracht');
 
               // create the user
 
-               var now = new Date();
-              /*  var newLes           = new Les();
-              newLes.naam    = req.body.naam;
-              newLes.aangemaakt = now;
-              newLes.bewerkt=now;*/
+              var now = new Date();
+              var curr_year = now.getFullYear();
+              var curr_Month = now.getMonth() + 1;
+              var curr_date = now.getDate();
+              var curr_hour=now.getHours()+1;
+              var curr_min=now.getMinutes()+1;
+              var todayDate =  (curr_date + "/" + curr_Month + "/" + curr_year+" "+curr_hour+":"+curr_min);
               console.log(leerkracht.lessen);
 
-              leerkracht.lessen.push({ naam: req.body.naam,aangemaakt:now, bewerkt:now });
+              leerkracht.lessen.push({ naam: req.body.naam,aangemaakt:todayDate, bewerkt:todayDate });
               leerkracht.save(function(err, saved) {
                  if(err) console.error(err);
              });

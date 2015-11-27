@@ -6,12 +6,13 @@
     "express": "~4.5.1",
     "express-session": "~1.0.0",
     "method-override": "~2.0.2",
-    "mongoose": "^3.8.37",
+    "mongoose": "3.8.37",
     "passport" : "~0.1.17",
     "passport-local" : "~0.1.6",
     "passport-local-mongoose": "^1.0.0",
     "connect-flash" : "~0.1.1",
     "bcrypt-nodejs" : "latest",
+      "morgan": "~1.0.0",
     "cookie-parser": "~1.0.0"
   }
 }

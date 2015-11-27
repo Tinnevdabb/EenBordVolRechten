@@ -15,10 +15,6 @@ var Leerkracht = require('./models/leerkracht');
         });
 
 
-
-        app.get('/BeheerLessen', isLoggedIn);
-
-
         // show the login form
 
 
@@ -70,7 +66,8 @@ var Leerkracht = require('./models/leerkracht');
 
 
     app.get('/api/leerkrachtData', isLoggedInAjax, function(req, res) {
-      return res.json(req.leerkracht);
+        console.log(req.user);
+      return res.json(req.user);
   });
 
 

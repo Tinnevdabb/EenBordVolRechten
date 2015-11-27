@@ -12,16 +12,6 @@ angular.module('LeerkrachtCtrl', []).controller('LeerkrachtController', ['$http'
                     console.log(data);
                 });
         }
-        $scope.connect = function() {
-            $http
-                .post('/connect/local', {
-                    email: this.email,
-                    password: this.password
-                })
-                .success(function(data) {
-                    console.log(data);
-                });
-        }
 
 
 }]);

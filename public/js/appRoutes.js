@@ -29,6 +29,10 @@
             templateUrl: 'views/BeheerLessen.html',
             controller: 'LessenController'
         })
+        .when('/BeheerVragen', {
+            templateUrl: 'views/BeheerVragen.html',
+            controller: 'VragenController'
+        })
         .otherwise({
                     templateUrl: '/views/home.html',
                     controller: 'MainController',

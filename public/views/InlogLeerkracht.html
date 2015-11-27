@@ -6,7 +6,7 @@
 
           <div growl></div>
 
-        <form action="/InlogLeerkracht" method="post"
+        <form ng-submit="login()" method="post"
               style="margin-top:30px;">
 
                 <div class="form-group">
@@ -17,7 +17,7 @@
                       <input type="text"
                              class="form-control"
                              placeholder="email"
-                             name="email"></input>
+                             ng-model="email"></input>
                   </div>
                 </div>
 
@@ -26,10 +26,10 @@
                 <span class="input-group-addon" id="basic-addon1">
                    <i class="glyphicon glyphicon-asterisk"></i>
                 </span>
-                  <input type="text"
+                  <input type="password"
                          class="form-control"
                          placeholder="Paswoord"
-                         name="password"></input>
+                         ng-model="password"></input>
               </div>
             </div>
 

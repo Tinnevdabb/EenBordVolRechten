@@ -4,6 +4,7 @@
 var express        = require('express');// call express
 var app            = express();// define our app using express
 var port = process.env.PORT || 8080;// set our port
+var path     = require('path'); //Add path into our required list
 var bodyParser     = require('body-parser');
 var cookieParser = require('cookie-parser');
 var methodOverride = require('method-override');
@@ -40,7 +41,7 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 
 
 // set the static files location /public/img will be /img for users
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(path.join(__dirname, '/public')));
 
 // routes ==================================================
 require('./app/routes')(app, passport); // configure our routes

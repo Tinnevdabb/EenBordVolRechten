@@ -4,7 +4,7 @@
 
           <h1 class='col-md-12 text-center'>Registreer</h1>
           <div class='col-xs-offset-2 col-xs-8 col-md-offset-4 col-md-4 login-form-bg'>
-       <form action="/SignUp" method="post"
+       <form ng-submit="signup()"
              style="margin-top:30px;">
 
              <div class="form-group">
@@ -15,8 +15,7 @@
                <input type="text"
                       class="form-control"
                       placeholder="E-mail"
-                      name='email'
-                      ng-model="data.email"></input>
+                      ng-model="email"></input>
                     </div>
            </div>
            <div class="form-group">
@@ -27,8 +26,7 @@
                    <input type="text"
                           class="form-control"
                           placeholder="Voornaam"
-                          name='firstname'
-                          ng-model="data.voornaam"></input>
+                          ng-model="firstname"></input>
                         </div>
                </div>
 
@@ -40,8 +38,7 @@
                    <input type="text"
                           class="form-control"
                           placeholder="Achternaam"
-                          name='lastname'
-                          ng-model="data.achternaam"></input>
+                          ng-model="lastname"></input>
                         </div>
                </div>
                <div class="form-group">
@@ -49,11 +46,10 @@
                     <span class="input-group-addon" id="basic-addon1">
                        <i class="glyphicon glyphicon-asterisk"></i>
                     </span>
-                   <input type="text"
+                   <input type="password"
                           class="form-control"
                           placeholder="Paswoord"
-                          name="password"
-                          ng-model="data.paswoord"></input>
+                          ng-model="password"></input>
                         </div>
                </div>
                <div class="form-group text-center">

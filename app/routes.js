@@ -8,43 +8,73 @@ var Leerkracht = require('./models/leerkracht');
         // handle things like api calls
         // authentication routes
 
-        // sample api route
-        app.get('/api/leerkrachten', function(req, res) {
-            // use mongoose to get all leerkrachten in the database
-            leerkrachten.find(function(err, leerkrachten) {
-
-                // if there is an error retrieving, send the error.
-                                // nothing after res.send(err) will execute
-                if (err)
-                    res.send(err);
-
-                res.json(leerkrachten); // return all nerds in JSON format
-            });
+        // LOGOUT ==============================
+        app.post('/logout', function(req, res) {
+          req.logout();
+          res.json({ redirect: '/logout' });
         });
+
+
 
         app.get('/BeheerLessen', isLoggedIn);
 
-        app.get('/logout', function(req, res) {
-        req.logout();
-        res.redirect('/');
-    });
 
         // show the login form
 
 
-          // process the signup form
-          app.post('/SignUp', passport.authenticate('local-signup', {
-              successRedirect : '/BeheerLessen', // redirect to the secure profile section
-              failureRedirect : '/SignUp', // redirect back to the signup page if there is an error
-              failureFlash : true // allow flash messages
-          }));
+        // LOGIN ===============================
 
-          // process the login form
-          app.post('/InlogLeerkracht', passport.authenticate('local-login', {
-              successRedirect : '/BeheerLessen', // redirect to the secure profile section
-              failureRedirect : '/InlogLeerkracht', // redirect back to the signup page if there is an error
-              failureFlash : true // allow flash messages
-          }));
+        // process the login form
+        app.post('/InlogLeerkracht', function(req, res, next) {
+            if (!req.body.email || !req.body.password) {
+                return res.json({ error: 'Email and Password required' });
+            }
+            passport.authenticate('local-login', function(err, leerkracht, info) {
+                if (err) {
+                    return res.json(err);
+                }
+                if (leerkracht.error) {
+                    return res.json({ error: leerkracht.error });
+                }
+                req.logIn(leerkracht, function(err) {
+                    if (err) {
+                        return res.json(err);
+                    }
+                    return res.json({ redirect: '/BeheerLessen' });
+                });
+            })(req, res);
+          });
+
+          // SIGNUP =================================
+
+		// process the signup form
+		app.post('/SignUp', function(req, res, next) {
+		    if (!req.body.email || !req.body.password || !req.body.firstname|| !req.body.lastname) {
+		        return res.json({ error: 'Please fill in all the fields' });
+		    }
+		    passport.authenticate('local-signup', function(err, leerkracht, info) {
+		        if (err) {
+		            return res.json(err);
+		        }
+		        if (leerkracht.error) {
+		            return res.json({ error: leerkracht.error });
+		        }
+		        req.logIn(leerkracht, function(err) {
+		            if (err) {
+		                return res.json(err);
+		            }
+		            return res.json({ redirect: '/BeheerLessen' });
+		        });
+		    })(req, res);
+		});
+
+
+    app.get('/api/leerkrachtData', isLoggedInAjax, function(req, res) {
+      return res.json(req.leerkracht);
+  });
+
+
+
 
 
 
@@ -58,6 +88,15 @@ var Leerkracht = require('./models/leerkracht');
         });
 
     };
+
+    // route middleware to ensure user is logged in - ajax get
+    function isLoggedInAjax(req, res, next) {
+        if (!req.isAuthenticated()) {
+            return res.json( { redirect: '/' } );
+        } else {
+            next();
+        }
+    }
 
     // route middleware to make sure a user is logged in
 function isLoggedIn(req, res, next) {

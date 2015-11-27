@@ -28,7 +28,12 @@
         .when('/BeheerLessen', {
             templateUrl: 'views/BeheerLessen.html',
             controller: 'LessenController'
-        });
+        })
+        .otherwise({
+                    templateUrl: '/views/home.html',
+                    controller: 'MainController',
+
+                });
 
     $locationProvider.html5Mode(true);
 

@@ -27,89 +27,90 @@ module.exports = function(passport) {
         });
     });
 
-    passport.use('local-login', new LocalStrategy({
-      // by default, local strategy uses username and password, we will override with email
-      usernameField : 'email',
-      passwordField : 'password',
-      passReqToCallback : true // allows us to pass back the entire request to the callback
-  },
-  function(req, email, password, done) { // callback with email and password from our form
-
-      // find a user whose email is the same as the forms email
-      // we are checking to see if the user trying to login already exists
-      Leerkracht.findOne({ 'email' :  email }, function(err, leerkracht) {
-          // if there are any errors, return the error before anything else
-          if (err)
-              return done(err);
-
-          // if no user is found, return the message
-          if (!leerkracht)
-              return done(null, false, req.flash('loginMessage', 'No user found.')); // req.flash is the way to set flashdata using connect-flash
-
-          // if the user is found but the password is wrong
-          if (!leerkracht.validPassword(password))
-              return done(null, false, req.flash('loginMessage', 'Oops! Wrong password.')); // create the loginMessage and save it to session as flashdata
-
-          // all is well, return successful user
-          return done(null, leerkracht);
-      });
-
-  }));
-
-
-
     // =========================================================================
-    // LOCAL SIGNUP ============================================================
-    // =========================================================================
-    // we are using named strategies since we have one for login and one for signup
-    // by default, if there was no name, it would just be called 'local'
+      // LOCAL LOGIN =============================================================
+      // =========================================================================
+      passport.use('local-login', new LocalStrategy({
+          // by default, local strategy uses username and password, we will override with email
+          usernameField : 'email',
+          passwordField : 'password',
+          passReqToCallback : true // allows us to pass in the req from our route (lets us check if a user is logged in or not)
+      },
+      function(req, email, password, done) {
+          if (email)
+              email = email.toLowerCase(); // Use lower-case e-mails to avoid case-sensitive e-mail matching
 
-    passport.use('local-signup', new LocalStrategy({
-        // by default, local strategy uses username and password, we will override with email
-        usernameField : 'email',
-        passwordField : 'password',
-        passReqToCallback : true // allows us to pass back the entire request to the callback
-    },
-    function(req, email, password, done) {
+          // asynchronous
+          process.nextTick(function() {
+              Leerkracht.findOne({ 'email' :  email }, function(err, leerkracht) {
+                  // if there are any errors, return the error
+                  if (err)
+                      return done(err);
 
-        // asynchronous
-        // User.findOne wont fire unless data is sent back
-        process.nextTick(function() {
+                  // if no user is found, return the message
+                  if (!leerkracht)
+                      return done(null, { error: 'No user found. ' });
 
-        // find a user whose email is the same as the forms email
-        // we are checking to see if the user trying to login already exists
-        Leerkracht.findOne({ 'email' :  email }, function(err, leerkracht) {
-            // if there are any errors, return the error
-            if (err)
-                return done(err);
+                  if (!leerkracht.validPassword(password))
+                      return done(null, { error: 'Oops! Wrong password.' });
 
-            // check to see if theres already a user with that email
-            if (leerkracht) {
-                return done(null, false, req.flash('signupMessage', 'That email is already taken.'));
-            } else {
+                  // all is well, return user
+                  else
+                      return done(null, leerkracht);
+              });
+          });
+      }));
 
-                // if there is no user with that email
-                // create the user
-                var newLeerkracht            = new Leerkracht();
+      // =========================================================================
+      // LOCAL SIGNUP =============================================================
+      // =========================================================================
+      passport.use('local-signup', new LocalStrategy({
+          // by default, local strategy uses username and password, we will override with email
+          usernameField : 'email',
+          passwordField : 'password',
+          passReqToCallback : true // allows us to pass in the req from our route (lets us check if a user is logged in or not)
+      },
+      function(req, email, password, done) {
+          if (email)
+              email = email.toLowerCase(); // Use lower-case e-mails to avoid case-sensitive e-mail matching
 
-                // set the user's local credentials
-                newLeerkracht.email    = email;
-                newLeerkracht.password = newLeerkracht.generateHash(password);
-                newLeerkracht.firstname= req.body.firstname,
-                newLeerkracht.lastname= req.body.lastname,
+          // asynchronous
+          process.nextTick(function() {
+              // if the user is not already logged in:
+              if (!req.leerkracht) {
+                  Leerkracht.findOne({ 'email' :  email }, function(err, leerkracht) {
+                      // if there are any errors, return the error
+                      if (err)
+                          return done(err);
 
-                // save the user
-                newLeerkracht.save(function(err) {
-                    if (err)
-                        throw err;
-                    return done(null, newLeerkracht);
-                });
-            }
+                      console.log(leerkracht);
+                      // check to see if theres already a user with that email
+                      if (leerkracht) {
+                          return done(null, { error: 'That email is already taken.' });
+                      } else {
 
-        });
+                          // create the user
+                          var newlLeerkracht           = new Leerkracht();
 
-        });
+                          newlLeerkracht.email    = email;
+                          newlLeerkracht.password = newlLeerkracht.generateHash(password);
+                          newlLeerkracht.firstname=req.body.firstname;
+                          newlLeerkracht.lastname=req.body.lastname;
 
-    }));
+                          newlLeerkracht.save(function(err) {
+                              if (err)
+                                  throw err;
 
-};
+                              return done(null, newlLeerkracht);
+                          });
+                      }
+
+                  });
+              // if the user is logged in but has no local account...
+              }
+
+          });
+
+      }));
+
+  };

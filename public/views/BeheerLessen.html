@@ -22,10 +22,10 @@
            </tr>
          </thead>
          <tbody>
-           <tr ng-repeat="x in lessen">
-               <td>{{ x.Naam }}</td>
-               <td>{{ x.Aangemaakt }}</td>
-               <td>{{ x.Bewerkt }}</td>
+           <tr ng-repeat="les in leerkracht.lessen">
+               <td>{{ les.naam }}</td>
+               <td>{{ les.aangemaakt }}</td>
+               <td>{{ les.bewerkt }}</td>
                <td>
                    <div class="btn-group btn-group-sm" role="group">
                      <button ng-click="" class="btn btn-success">
@@ -48,8 +48,8 @@
          <tfoot>
            <tr>
                <td ><input type="text" ng-model="naam" /></td>
-               <td><input type="text" ng-model="aangemaakt" /></td>
-                <td><input type="text" ng-model="bewerkt" /></td>
+               <td></td>
+                <td></td>
                <td><button ng-click="addLes()"> Voeg toe</button></td>
              </tr>
            </tfoot>

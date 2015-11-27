@@ -5,12 +5,27 @@ var Schema = mongoose.Schema,
  bcrypt   = require('bcrypt-nodejs');
 
 var leerkrachtSchema=new Schema({
-  firstname : {type : String, required: true,},
+  firstname : {type : String, required: true},
   lastname : {type : String, required: true},
   email : {type : String, required: true, index: { unique: true },match: [/.+\@.+\..+/, "Please fill a valid e-mail address"]},
-  password: {type: String,required: true}
-
+  password: {type: String,required: true},
+  lessen:[lesSchema]
 },{ collection: 'leerkrachten' });
+
+var lesSchema=new Schema({
+  naam : {type : String, required: true},
+  vragen:[vraagSchema],
+  aangemaakt:  { type: Date },
+  bewerkt: { type: Date }
+},{ collection: 'lessen' });
+
+var vraagSchema=new Schema({
+  vraag : {type : String, required: true,},
+  soort: {type : String},
+  aangemaakt:  { type: Date },
+  bewerkt: { type: Date }
+},{ collection: 'vragen' });
+
 
 // methods ======================
 // generating a hash
@@ -24,6 +39,8 @@ leerkrachtSchema.methods.validPassword = function(password) {
 };
 
 var Leerkracht = mongoose.model('Leerkracht', leerkrachtSchema);
+var Les = mongoose.model('Les', lesSchema);
+var Vraag = mongoose.model('Vraag', vraagSchema);
 
 // module.exports allows us to pass this to other files when it is called
 module.exports = Leerkracht;

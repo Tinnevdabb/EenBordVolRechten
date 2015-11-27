@@ -2,6 +2,7 @@
 // grab the leerkracht model we just created
 var Leerkracht = require('./models/leerkracht');
 
+
     module.exports = function(app, passport) {
 
         // server routes ===========================================================
@@ -46,7 +47,7 @@ var Leerkracht = require('./models/leerkracht');
 		// process the signup form
 		app.post('/SignUp', function(req, res, next) {
 		    if (!req.body.email || !req.body.password || !req.body.firstname|| !req.body.lastname) {
-		        return res.json({ error: 'Please fill in all the fields' });
+		        return res.json({ error: 'Vul aub alle velden in' });
 		    }
 		    passport.authenticate('local-signup', function(err, leerkracht, info) {
 		        if (err) {
@@ -63,6 +64,34 @@ var Leerkracht = require('./models/leerkracht');
 		        });
 		    })(req, res);
 		});
+
+  // ADD LES =================================
+  app.post('/addLes', function(req, res, next) {
+      if (!req.body.naam) {
+          return res.json({ error: 'Vul aub een les naam in' });
+      }
+
+          Leerkracht.findById(req.user._id, function(err, leerkracht) {
+          // if there are any errors, return the error
+          if (err)
+              return done(err);
+
+              // create the user
+
+               var now = new Date();
+              /*  var newLes           = new Les();
+              newLes.naam    = req.body.naam;
+              newLes.aangemaakt = now;
+              newLes.bewerkt=now;*/
+              console.log(leerkracht.lessen);
+
+              leerkracht.lessen.push({ naam: req.body.naam,aangemaakt:now, bewerkt:now });
+              leerkracht.save(function(err, saved) {
+                 if(err) console.error(err);
+             });
+        });
+      });
+
 
 
     app.get('/api/leerkrachtData', isLoggedInAjax, function(req, res) {

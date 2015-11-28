@@ -29,7 +29,7 @@
             templateUrl: 'views/BeheerLessen.html',
             controller: 'LessenController'
         })
-        .when('/BeheerVragen', {
+        .when('/BeheerVragen/:vraagID', {
             templateUrl: 'views/BeheerVragen.html',
             controller: 'VragenController'
         })

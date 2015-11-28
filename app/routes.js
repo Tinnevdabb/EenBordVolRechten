@@ -141,6 +141,21 @@ var models = require('./models/leerkracht');
 
         });
 
+      //OPEN LES =====================================================
+
+      app.get('/api/LessenData/:les_id', isLoggedInAjax, function(req, res) {
+
+          models.Leerkracht.findById(req.user._id, function(err, leerkracht){
+                var les=leerkracht.lessen.id(req.params.les_id);
+
+                console.log(req.user);
+              return res.json(les);
+
+
+                });
+          });
+
+
       //PROTECT PAGES AND DATA ===============================================================
           app.get('/BeheerLessen',isLoggedIn);
           app.get('/BeheerVragen',isLoggedIn);

@@ -19,4 +19,17 @@ appLessen.controller('LessenController', ['$http', '$scope', '$routeParams', fun
                             });
                     }
 
+
+              $scope.deleteLes = function(id) {
+              $http.delete('/deleteLes/' + id)
+                  .success(function(data) {
+                      $scope.leerkracht = data;
+                      console.log(data);
+                  })
+                  .error(function(data) {
+                      console.log('Error: ' + data);
+                  });
+          };
+
+
 }]);

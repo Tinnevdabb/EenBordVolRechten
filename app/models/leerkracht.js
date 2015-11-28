@@ -4,6 +4,21 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema,
  bcrypt   = require('bcrypt-nodejs');
 
+ var vraagSchema=new Schema({
+   vraag : {type : String, required: true,},
+   soort: {type : String},
+   aangemaakt:  { type: Date },
+   bewerkt: { type: Date }
+ },{ collection: 'vragen' },{_id: true});
+
+ var lesSchema=new Schema({
+   naam : {type : String, required: true},
+   vragen:[vraagSchema],
+   aangemaakt:  { type: Date },
+   bewerkt: { type: Date }
+ },{ collection: 'lessen' },{_id: true});
+
+ //subdocument schema's have to be before parent schema 
 var leerkrachtSchema=new Schema({
   firstname : {type : String, required: true},
   lastname : {type : String, required: true},
@@ -12,19 +27,8 @@ var leerkrachtSchema=new Schema({
   lessen:[lesSchema]
 },{ collection: 'leerkrachten' });
 
-var lesSchema=new Schema({
-  naam : {type : String, required: true},
-  vragen:[vraagSchema],
-  aangemaakt:  { type: Date },
-  bewerkt: { type: Date }
-},{ collection: 'lessen' },{_id: true});
 
-var vraagSchema=new Schema({
-  vraag : {type : String, required: true,},
-  soort: {type : String},
-  aangemaakt:  { type: Date },
-  bewerkt: { type: Date }
-},{ collection: 'vragen' },{_id: true});
+
 
 
 // methods ======================

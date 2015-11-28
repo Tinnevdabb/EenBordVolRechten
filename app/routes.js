@@ -96,7 +96,7 @@ var models = require('./models/leerkracht');
 
                      leerkracht.save(function (err){
                          if (err) {
-                         console.log('error adding new task to list');
+                         console.log('error adding new les to list');
                          console.log(err);
                          }
                          req.login(leerkracht, function(err) {
@@ -114,17 +114,46 @@ var models = require('./models/leerkracht');
 
       });
 
+      //DELETE LES =====================================================
+
+      // delete a todo
+        app.delete('/deleteLes/:les_id', function(req, res,next) {
+
+          models.Leerkracht.findById(req.user._id, function(err, leerkracht){
+
+              leerkracht.lessen.id(req.params.les_id).remove();
+
+              leerkracht.save(function (err){
+                  if (err) {
+                  console.log('error deleting les from list');
+                  console.log(err);
+                  }
+                  req.login(leerkracht, function(err) {
+                    if (err) return next(err)
+
+                    console.log("After relogin: ");
+                    console.info(req.user);
+                    return  res.json(req.user);
+                  });
+              });
+          });
 
 
-    app.get('/api/leerkrachtData', isLoggedInAjax, function(req, res) {
-        console.log(req.user);
-      return res.json(req.user);
-  });
+        });
 
-  app.get('/api/leerkrachtData', isLoggedInAjax, function(req, res) {
-      console.log(req.user);
-    return res.json(req.user);
-});
+
+
+
+          app.get('/api/leerkrachtData', isLoggedInAjax, function(req, res) {
+              console.log(req.user);
+            return res.json(req.user);
+        });
+
+        app.get('/api/lessenData', isLoggedInAjax, function(req, res) {
+            console.log(req.user);
+          return res.json(req.user);
+      });
+
 
 
 

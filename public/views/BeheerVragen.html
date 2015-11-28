@@ -1,0 +1,60 @@
+<section ng-controller="VragenController">
+
+  <nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+       <a class="navbar-brand" href="/BeheerLessen">Beheer Lessen</a>
+     </div>
+     <ul class="nav navbar-nav navbar-right">
+  <li><a href="#"><span class="glyphicon glyphicon-user"></span>{{ leerkracht.firstname }}</a></li>
+  <li><a logout href="/logout"><span class="glyphicon glyphicon-log-out"></span> Log uit</a></li>
+        </ul>
+      </div>
+  </nav>
+
+   <div class="table-responsive">
+       <table class="table table-hover ">
+         <thead>
+           <tr>
+               <th> Naam</th>
+               <th> Aangemaakt</th>
+               <th> Bewerkt</th>
+               <th > Actie</th>
+           </tr>
+         </thead>
+         <tbody>
+           <tr ng-repeat="les in leerkracht.lessen">
+               <td>{{ les.naam }}</td>
+               <td>{{ les.aangemaakt }}</td>
+               <td>{{ les.bewerkt }}</td>
+               <td>
+                   <div class="btn-group btn-group-sm" role="group">
+                     <button ng-click="" class="btn btn-success">
+                   <i class="glyphicon glyphicon-play"> </i>
+                 </button>
+                  <button ng-click="bewerkLes(x.Naam)" class="btn btn-warning">
+                     <i class="glyphicon glyphicon-pencil"> </i>
+                  </button>
+                   <button ng-click="" class="btn btn-info">
+                     <i class="glyphicon glyphicon-download-alt"> </i>
+                  </button>
+                  <button ng-click="deleteLes(x.Naam)" class="btn btn-danger">
+                     <i class="glyphicon glyphicon-remove"> </i>
+                  </button>
+                </div>
+              </td>
+
+           </tr>
+         </tbody>
+         <tfoot>
+           <tr>
+               <td ><input type="text" ng-model="naam" /></td>
+               <td>  <div growl></div></td>
+                <td></td>
+               <td><button ng-click="addLes()"> Voeg toe</button></td>
+             </tr>
+           </tfoot>
+</table>
+</div>
+
+</section>

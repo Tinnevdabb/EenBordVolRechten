@@ -141,8 +141,9 @@ var models = require('./models/leerkracht');
 
         });
 
-
-
+      //PROTECT PAGES AND DATA ===============================================================
+          app.get('/BeheerLessen',isLoggedIn);
+          app.get('/BeheerVragen',isLoggedIn);
 
           app.get('/api/leerkrachtData', isLoggedInAjax, function(req, res) {
               console.log(req.user);
@@ -153,10 +154,6 @@ var models = require('./models/leerkracht');
             console.log(req.user);
           return res.json(req.user);
       });
-
-
-
-
 
 
 

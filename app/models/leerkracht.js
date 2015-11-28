@@ -17,14 +17,14 @@ var lesSchema=new Schema({
   vragen:[vraagSchema],
   aangemaakt:  { type: Date },
   bewerkt: { type: Date }
-},{ collection: 'lessen' });
+},{ collection: 'lessen' },{_id: true});
 
 var vraagSchema=new Schema({
   vraag : {type : String, required: true,},
   soort: {type : String},
   aangemaakt:  { type: Date },
   bewerkt: { type: Date }
-},{ collection: 'vragen' });
+},{ collection: 'vragen' },{_id: true});
 
 
 // methods ======================
@@ -43,4 +43,7 @@ var Les = mongoose.model('Les', lesSchema);
 var Vraag = mongoose.model('Vraag', vraagSchema);
 
 // module.exports allows us to pass this to other files when it is called
-module.exports = Leerkracht;
+module.exports ={
+  Leerkracht: Leerkracht,
+    Les: Les,
+    Vraag: Vraag } ;

@@ -1,7 +1,6 @@
 // app/routes.js
 // grab the leerkracht model we just created
-var Leerkracht = require('./models/leerkracht');
-
+var models = require('./models/leerkracht');
     module.exports = function(app, passport) {
 
         // server routes ===========================================================
@@ -70,27 +69,43 @@ var Leerkracht = require('./models/leerkracht');
           return res.json({ error: 'Vul aub een les naam in' });
       }
 
-          Leerkracht.findById(req.user._id, function(err, leerkracht) {
-          // if there are any errors, return the error
-          if (err)
-              return done(err);
+      var now = new Date();
+      var curr_year = now.getFullYear();
+      var curr_Month = now.getMonth() + 1;
+      var curr_date = now.getDate();
+      var curr_hour=now.getHours();
+      var curr_min=now.getMinutes()+1;
+      var todayDate =  (curr_Month + "/" +  curr_date + "/" + curr_year+" "+curr_hour+":"+curr_min);
 
-              // create the user
+      var newLes=new models.Les();
+      newLes.naam=req.body.naam;
+      newLes.aangemaakt=todayDate;
+      newLes.bewerkt=todayDate;
 
-              var now = new Date();
-              var curr_year = now.getFullYear();
-              var curr_Month = now.getMonth() + 1;
-              var curr_date = now.getDate();
-              var curr_hour=now.getHours()+1;
-              var curr_min=now.getMinutes()+1;
-              var todayDate =  (curr_date + "/" + curr_Month + "/" + curr_year+" "+curr_hour+":"+curr_min);
-              console.log(leerkracht.lessen);
+      newLes.save(function (err){
+          if (err) {
+               console.log('error saving new task');
+               console.log(err);
+           }
+           else {
+                 console.log('new task saved successfully');
 
-              leerkracht.lessen.push({ naam: req.body.naam,aangemaakt:todayDate, bewerkt:todayDate });
-              leerkracht.save(function(err, saved) {
-                 if(err) console.error(err);
-             });
-        });
+                 models.Leerkracht.findById(req.user._id, function(err, leerkracht){
+
+                     leerkracht.lessen.push(newLes);
+
+                     leerkracht.save(function (err){
+                         if (err) {
+                         console.log('error adding new task to list');
+                         console.log(err);
+                         }
+                     });
+                 });
+             };
+          });
+
+
+
       });
 
 
@@ -99,6 +114,11 @@ var Leerkracht = require('./models/leerkracht');
         console.log(req.user);
       return res.json(req.user);
   });
+
+  app.get('/api/leerkrachtData', isLoggedInAjax, function(req, res) {
+      console.log(req.user);
+    return res.json(req.user);
+});
 
 
 

@@ -4,7 +4,7 @@
 var LocalStrategy   = require('passport-local').Strategy;
 
 // load up the user model
-var Leerkracht   = require('../app/models/leerkracht');
+var models   = require('../app/models/leerkracht');
 
 // expose this function to our app using module.exports
 module.exports = function(passport) {
@@ -22,7 +22,7 @@ module.exports = function(passport) {
 
     // used to deserialize the user
     passport.deserializeUser(function(id, done) {
-        Leerkracht.findById(id, function(err, leerkracht) {
+        models.Leerkracht.findById(id, function(err, leerkracht) {
             done(err, leerkracht);
         });
     });
@@ -42,7 +42,7 @@ module.exports = function(passport) {
 
           // asynchronous
           process.nextTick(function() {
-              Leerkracht.findOne({ 'email' :  email }, function(err, leerkracht) {
+              models.Leerkracht.findOne({ 'email' :  email }, function(err, leerkracht) {
                   // if there are any errors, return the error
                   if (err)
                       return done(err);
@@ -78,7 +78,7 @@ module.exports = function(passport) {
           process.nextTick(function() {
               // if the user is not already logged in:
               if (!req.leerkracht) {
-                  Leerkracht.findOne({ 'email' :  email }, function(err, leerkracht) {
+                  models.Leerkracht.findOne({ 'email' :  email }, function(err, leerkracht) {
                       // if there are any errors, return the error
                       if (err)
                           return done(err);
@@ -90,7 +90,7 @@ module.exports = function(passport) {
                       } else {
 
                           // create the user
-                          var newlLeerkracht           = new Leerkracht();
+                          var newlLeerkracht           = new models.Leerkracht();
 
                           newlLeerkracht.email    = email;
                           newlLeerkracht.password = newlLeerkracht.generateHash(password);

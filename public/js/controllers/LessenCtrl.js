@@ -16,7 +16,6 @@ appLessen.controller('LessenController', ['$http', '$scope', '$routeParams', fun
                             .success(function(data) {
                               $scope.naam =""; // clear the form so our user is ready to enter another
                               $scope.leerkracht = data;
-                                console.log(data);
                             });
                     }
 

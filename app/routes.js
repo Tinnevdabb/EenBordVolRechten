@@ -99,11 +99,17 @@ var models = require('./models/leerkracht');
                          console.log('error adding new task to list');
                          console.log(err);
                          }
+                         req.login(leerkracht, function(err) {
+                           if (err) return next(err)
+
+                           console.log("After relogin: ");
+                           console.info(req.user);
+                           return  res.json(req.user);
+                         });
                      });
                  });
              };
           });
-
 
 
       });

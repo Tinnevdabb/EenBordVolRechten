@@ -21,9 +21,11 @@ angular.module('VragenCtrl', []).controller('VragenController', ['$http', '$scop
               };
 
               $scope.deleteVraag = function(id) {
-              $http.delete('/deleteVraag/' + id)
+              $http.put('/deleteVraag/' + id, {
+                      lesID: $scope.lesID,
+                  })
                   .success(function(data) {
-                      $scope.leerkracht = data;
+                      $scope.les = data;
                   })
                   .error(function(data) {
                       console.log('Error: ' + data);

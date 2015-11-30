@@ -54,7 +54,7 @@ var models = require('../models/leerkracht');
 
       //DELETE LES =====================================================
 
-      // delete a todo
+      
         app.delete('/deleteLes/:les_id', function(req, res,next) {
 
           models.Leerkracht.findById(req.user._id, function(err, leerkracht){

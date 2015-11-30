@@ -51,4 +51,26 @@ app.post('/addVraag', function(req, res, next) {
 
         });
     });
+
+    //DELETE VRAAG=======================================================================
+
+    app.put('/deleteVraag/:vraag_id', function(req, res,next) {
+
+      models.Leerkracht.findById(req.user._id, function(err, leerkracht){
+          console.log(req.body.lesID);
+            leerkracht.lessen.id(req.body.lesID).vragen.id(req.params.vraag_id).remove();
+
+          leerkracht.save(function (err){
+              if (err) {
+              console.log('error deleting les from list');
+              console.log(err);
+              }
+                var les=leerkracht.lessen.id(req.body.lesID);
+                return  res.json(les);
+          });
+      });
+
+
+    });
+
   };

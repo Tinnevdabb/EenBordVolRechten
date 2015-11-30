@@ -1,7 +1,10 @@
 
 body{
   background-image: url("/img/Achtergrond.png");
-  background-color: #cccccc;
+  background-color: #dcdcdc;
+  background-position: bottom;
+  background-repeat: repeat-x;
+
 }
 
 .footer {

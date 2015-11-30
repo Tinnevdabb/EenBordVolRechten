@@ -1,9 +1,12 @@
 
 body{
-  background-image: url("/img/Achtergrond.png");
-  background-color: #dcdcdc;
-  background-position: bottom;
-  background-repeat: repeat-x;
+
+  background-color: #E0FFFF;
+  background-image: url("/img/Logo.png");
+  background-repeat: no-repeat;
+  background-position: center bottom;
+
+
 
 }
 
@@ -11,9 +14,14 @@ body{
   position: absolute;
   bottom: 0;
   width: 100%;
+  color: #FFFFFF;
   /* Set the fixed height of the footer here */
-  height: 30px;
+  height: 80px;
   text-align: center;
+  background:url("/img/FooterImg.png");
+  background-repeat: repeat-x;
+  background-position: bottom;
+
 }
 
 .login-form-bg{

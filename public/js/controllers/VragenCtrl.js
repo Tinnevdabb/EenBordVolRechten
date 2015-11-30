@@ -15,7 +15,6 @@ angular.module('VragenCtrl', []).controller('VragenController', ['$http', '$scop
                           soort: soortValue
                       })
                       .success(function(data) {
-                        console.log(data);
                         $scope.vraag =""; // clear the form so our user is ready to enter another
                         $scope.les = data;
                       });

@@ -20,6 +20,7 @@ angular.module('VragenCtrl', []).controller('VragenController', ['$http', '$scop
                       });
               };
 
+              //using put not delete because delete doesnt allow req.body parameters
               $scope.deleteVraag = function(id) {
               $http.put('/deleteVraag/' + id, {
                       lesID: $scope.lesID,

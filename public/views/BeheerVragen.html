@@ -1,4 +1,4 @@
-<section ng-controller="VragenController">
+<section ng-controller="VragenController" >
 
   <nav class="navbar navbar-inverse">
   <div class="container-fluid">
@@ -24,22 +24,18 @@
            </tr>
          </thead>
          <tbody>
-           <tr ng-repeat="les in leerkracht.lessen">
-               <td>{{ les.naam }}</td>
-               <td>{{ les.aangemaakt }}</td>
-               <td>{{ les.bewerkt }}</td>
+           <tr ng-repeat="vraag in les.vragen">
+               <td>{{ vraag.vraag }}</td>
+               <td>{{ vraag.aangemaakt }}</td>
+               <td>{{ vraag.bewerkt }}</td>
                <td>
                    <div class="btn-group btn-group-sm" role="group">
-                     <button ng-click="" class="btn btn-success">
-                   <i class="glyphicon glyphicon-play"> </i>
-                 </button>
-                  <button ng-click="bewerkLes(x.Naam)" class="btn btn-warning">
+
+                  <button ng-click="bewerkLes(vraag._id)" class="btn btn-warning">
                      <i class="glyphicon glyphicon-pencil"> </i>
                   </button>
-                   <button ng-click="" class="btn btn-info">
-                     <i class="glyphicon glyphicon-download-alt"> </i>
-                  </button>
-                  <button ng-click="deleteLes(x.Naam)" class="btn btn-danger">
+
+                  <button ng-click="deleteLes(vraag._id)" class="btn btn-danger">
                      <i class="glyphicon glyphicon-remove"> </i>
                   </button>
                 </div>
@@ -49,10 +45,18 @@
          </tbody>
          <tfoot>
            <tr>
-               <td ><input type="text" ng-model="naam" /></td>
-               <td>  <div growl></div></td>
-                <td></td>
-               <td><button ng-click="addLes()"> Voeg toe</button></td>
+               <td ><input type="text" ng-model="vraag" /></td>
+               <td>
+                 <select class="form-control" id="VraagSoort">
+                   <option value="" disabled selected>Soort</option>
+                   <option value="open">Open</option>
+                   <option value="meerkeuze">Meerkeuze</option>
+                 </select>
+                </td>
+                <td>
+                   <div growl></div>
+                </td>
+               <td><button ng-click="addVraag()"> Voeg toe</button></td>
              </tr>
            </tfoot>
 </table>

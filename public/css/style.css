@@ -32,3 +32,8 @@ body{
   margin-top: 50px;
 
 }
+
+.table-responsive {
+  overflow-x: visible !important;
+  overflow-y: visible !important;
+}

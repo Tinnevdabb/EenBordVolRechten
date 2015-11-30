@@ -41,7 +41,10 @@ app.use(passport.session()); // persistent login sessions
 app.use(express.static(path.join(__dirname, '/public')));
 
 // routes ==================================================
-require('./app/routes')(app, passport); // configure our routes
+require('./app/routes/routes')(app, passport); // configure our routes
+require('./app/routes/lessenRoutes')(app, passport); // configure our routes
+require('./app/routes/loginRoutes')(app, passport); // configure our routes
+require('./app/routes/vragenRoutes')(app, passport); // configure our routes
 
 
 // start app ===============================================

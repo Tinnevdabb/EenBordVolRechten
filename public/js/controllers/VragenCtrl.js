@@ -20,4 +20,14 @@ angular.module('VragenCtrl', []).controller('VragenController', ['$http', '$scop
                       });
               };
 
+              $scope.deleteVraag = function(id) {
+              $http.delete('/deleteVraag/' + id)
+                  .success(function(data) {
+                      $scope.leerkracht = data;
+                  })
+                  .error(function(data) {
+                      console.log('Error: ' + data);
+                  });
+                };
+
 }]);

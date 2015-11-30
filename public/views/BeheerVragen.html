@@ -18,16 +18,16 @@
          <thead>
            <tr>
                <th> Naam</th>
+               <th> Soort</th>
                <th> Aangemaakt</th>
-               <th> Bewerkt</th>
                <th > Actie</th>
            </tr>
          </thead>
          <tbody>
            <tr ng-repeat="vraag in les.vragen">
                <td>{{ vraag.vraag }}</td>
+               <td>{{ vraag.soort }}</td>
                <td>{{ vraag.aangemaakt }}</td>
-               <td>{{ vraag.bewerkt }}</td>
                <td>
                    <div class="btn-group btn-group-sm" role="group">
 
@@ -35,7 +35,7 @@
                      <i class="glyphicon glyphicon-pencil"> </i>
                   </button>
 
-                  <button ng-click="deleteLes(vraag._id)" class="btn btn-danger">
+                  <button ng-click="deleteVraag(vraag._id)" class="btn btn-danger">
                      <i class="glyphicon glyphicon-remove"> </i>
                   </button>
                 </div>

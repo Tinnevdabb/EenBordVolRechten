@@ -15,7 +15,7 @@ var models = require('../models/leerkracht');
       var curr_min=now.getMinutes()+1;
       var todayDate =  (curr_Month + "/" +  curr_date + "/" + curr_year+" "+curr_hour+":"+curr_min);
 
-      var md5 = require('MD5');
+      var md5 = require('md5');
       var hash = md5(req.body.naam);
       var hashK = hash.substr( 0, 6 );
 
@@ -24,6 +24,7 @@ var models = require('../models/leerkracht');
       newLes.aangemaakt=todayDate;
       newLes.bewerkt=todayDate;
       newLes.token=hashK;
+      newLes.actief=false;
 
       newLes.save(function (err){
           if (err) {

@@ -22,6 +22,7 @@ app.post('/addVraag', function(req, res, next) {
     newVraag.aangemaakt=todayDate;
     newVraag.bewerkt=todayDate;
     newVraag.soort=req.body.soort;
+    newVraag.actief=false;
 
     newVraag.save(function (err){
         if (err) {

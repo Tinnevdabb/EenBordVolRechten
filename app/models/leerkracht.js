@@ -19,7 +19,8 @@ var antwoordSchema=new Schema({
    soort: {type : String},
    aangemaakt:  { type: Date },
    bewerkt: { type: Date },
-   antwoorden:[antwoordSchema]
+   antwoorden:[antwoordSchema],
+   actief:{type:Boolean}
  },{ collection: 'vragen' },{_id: true});
 
  var lesSchema=new Schema({
@@ -27,7 +28,8 @@ var antwoordSchema=new Schema({
    vragen:[vraagSchema],
    aangemaakt:  { type: Date },
    bewerkt: { type: Date },
-   token: {type: String }
+   token: {type: String },
+   actief:{type:Boolean}
  },{ collection: 'lessen' },{_id: true});
 
  //subdocument schema's have to be before parent schema

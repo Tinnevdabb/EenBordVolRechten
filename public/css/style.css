@@ -2,20 +2,18 @@
 body{
 
   background-color: #E0FFFF;
-  background-image: url("/img/Logo.png");
   background-repeat: no-repeat;
   background-position: center bottom;
 
-
-
 }
+
 
 .footer {
   position: absolute;
   bottom: 0;
   width: 100%;
   color: #FFFFFF;
-  /* Set the fixed height of the footer here */
+  /* fixed height */
   height: 80px;
   text-align: center;
   background:url("/img/FooterImg.png");

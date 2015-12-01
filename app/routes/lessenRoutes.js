@@ -15,10 +15,15 @@ var models = require('../models/leerkracht');
       var curr_min=now.getMinutes()+1;
       var todayDate =  (curr_Month + "/" +  curr_date + "/" + curr_year+" "+curr_hour+":"+curr_min);
 
+      var md5 = require('MD5');
+      var hash = md5(req.body.naam);
+      var hashK = hash.substr( 0, 6 );
+
       var newLes=new models.Les();
       newLes.naam=req.body.naam;
       newLes.aangemaakt=todayDate;
       newLes.bewerkt=todayDate;
+      newLes.token=hashK;
 
       newLes.save(function (err){
           if (err) {
@@ -54,7 +59,7 @@ var models = require('../models/leerkracht');
 
       //DELETE LES =====================================================
 
-      
+
         app.delete('/deleteLes/:les_id', function(req, res,next) {
 
           models.Leerkracht.findById(req.user._id, function(err, leerkracht){

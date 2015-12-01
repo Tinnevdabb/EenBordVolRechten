@@ -26,7 +26,8 @@ var antwoordSchema=new Schema({
    naam : {type : String, required: true},
    vragen:[vraagSchema],
    aangemaakt:  { type: Date },
-   bewerkt: { type: Date }
+   bewerkt: { type: Date },
+   token: {type: String }
  },{ collection: 'lessen' },{_id: true});
 
  //subdocument schema's have to be before parent schema

@@ -1,4 +1,4 @@
 // config/db.js
     module.exports = {
-        url : 'mongodb://hannelore:unicef2015@ds047474.mongolab.com:47474/eenbordvolrechten'
+        url : 'mongodb://anja:unicef@ds047124.mongolab.com:47124/unicef'
     }

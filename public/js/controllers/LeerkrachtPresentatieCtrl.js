@@ -9,8 +9,9 @@ angular.module('LeerkrachtPresentatieCtrl', []).controller('LeerkrachtPresentati
 
       $scope.templates =
    [ { name: 'open', url: 'views/LeerkrachtPresentatie/LeerkrachtPresentatieOpen.html'},
+   { name: 'cloud', url: 'views/LeerkrachtPresentatie/LeerkrachtPresentatieCloud.html'},
      { name: 'multi', url: 'views/LeerkrachtPresentatie/LeerkrachtPresentatieOMulti.html'} ];
-      $scope.template = $scope.templates[0];
+      $scope.template = $scope.templates[1];
 
       $scope.stopLes=function(id){
          $location.path( '/BeheerLessen' );

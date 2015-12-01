@@ -6,6 +6,7 @@
         "font-awesome": "latest",
         "animate.css": "latest",
         "angular": "latest",
-        "angular-route": "latest"
+        "angular-route": "latest",
+        "angular-jqcloud": "1.0.2"
     }
 }

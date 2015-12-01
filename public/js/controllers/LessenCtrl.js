@@ -34,5 +34,9 @@ appLessen.controller('LessenController', ['$http', '$scope', '$routeParams','$lo
                 $location.path( '/BeheerVragen/'+ id );
              };
 
+             $scope.startLes=function(id){
+                $location.path( '/LeerkrachtPresentatie/'+ id );
+             };
+
 
 }]);

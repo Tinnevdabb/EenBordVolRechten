@@ -33,6 +33,10 @@
             templateUrl: 'views/BeheerVragen.html',
             controller: 'VragenController'
         })
+        .when('/LeerkrachtPresentatie/:lesID', {
+            templateUrl: 'views/LeerkrachtPresentatie.html',
+            controller: 'LeerkrachtPresentatieController'
+        })
         .otherwise({
                     templateUrl: '/views/home.html',
                     controller: 'MainController',

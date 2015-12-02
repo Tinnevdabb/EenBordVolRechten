@@ -71,7 +71,7 @@ var models = require('../models/leerkracht');
     });
 
 
-    // LOGIN lEERKLING===============================
+    // LOGIN lEERLING===============================
 
 
     app.post('/InlogLeerling', function(req, res, next) {
@@ -80,7 +80,10 @@ var models = require('../models/leerkracht');
             //code om sessie leerling te starten
 
 
-            
+            //res.json({ redirect: '/LeerlingPresentatie' });
+
+
+
       });
 
 

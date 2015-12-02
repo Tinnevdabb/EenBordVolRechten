@@ -1,4 +1,4 @@
-angular.module('LeerlingCtrl', []).controller('LeerlingController', function($scope) {
+angular.module('LeerlingCtrl', []).controller('LeerlingController',  ['$http',"$rootScope", '$scope', function($http, $rootScope, $scope) {
 
   $scope.InlogLeerling = function() {
             $http
@@ -13,4 +13,4 @@ angular.module('LeerlingCtrl', []).controller('LeerlingController', function($sc
         }
 
 
-});
+}]);

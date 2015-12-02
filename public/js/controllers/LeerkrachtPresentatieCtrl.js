@@ -47,6 +47,7 @@ angular.module('LeerkrachtPresentatieCtrl', []) .config(['slickCarouselConfig', 
       }
       };
 
+
       var changeTemplate=function(currentSlide){
         if($scope.vragen[currentSlide].soort=="open"){
              $scope.template = $scope.templates[0];

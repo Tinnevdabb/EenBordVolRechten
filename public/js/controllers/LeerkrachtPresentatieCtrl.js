@@ -42,28 +42,28 @@ angular.module('LeerkrachtPresentatieCtrl', []) .config(['slickCarouselConfig', 
         },
         afterChange: function (event, slick, currentSlide, nextSlide) {
           console.log('after change');
-          changeTemplate(currentSlide);
+          if($scope.vragen[currentSlide].soort=="open"){
+            $scope.$apply(function () {
+               $scope.template = $scope.templates[0];
+              });
+                  console.log($scope.template);
+           }else if($scope.vragen[currentSlide].soort=="meerkeuze"){
+             $scope.$apply(function () {
+                $scope.template = $scope.templates[2];
+               });
+                  console.log($scope.template);
+           }else{
+             $scope.$apply(function () {
+                $scope.template = $scope.templates[1];
+               });
+                console.log($scope.template);
+           }
         }
       }
       };
 
 
-      var changeTemplate=function(currentSlide){
-        if($scope.vragen[currentSlide].soort=="open"){
-             $scope.template = $scope.templates[0];
-                console.log($scope.template);
-             document.body.style.background = "blue";
-         }else if($scope.vragen[currentSlide].soort=="meerkeuze"){
-             $scope.template = $scope.templates[2];
-                console.log($scope.template);
-             document.body.style.background = "pink";
-         }else{
-           $scope.template = $scope.templates[1];
-              console.log($scope.template);
-           document.body.style.background = "yellow";
 
-         }
-      };
 
           $scope.templates =
           [ { name: 'open', url: 'views/LeerkrachtPresentatie/LeerkrachtPresentatieOpen.html'},

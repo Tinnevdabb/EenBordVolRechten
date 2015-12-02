@@ -80,9 +80,9 @@ var models = require('../models/leerkracht');
 
 
             //code om sessie leerling te starten
+res.cookie("name: ",req.body.voornaam+req.body.achternaam);
 
-
-            //res.json({ redirect: '/LeerlingPresentatie' });
+            res.json({ redirect: '/LeerlingPresentatie' });
 
 
 

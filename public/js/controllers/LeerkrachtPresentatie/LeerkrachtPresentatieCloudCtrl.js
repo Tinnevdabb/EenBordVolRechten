@@ -17,5 +17,6 @@ angular.module('LeerkrachtPresentatieCloudCtrl', []).controller('LeerkrachtPrese
       {text: "tristisque", weight: 3},
       {text: "senectus", weight: 3}];
 
+      document.body.style.background = "#CEF6F5 url"
 
 }]);

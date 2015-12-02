@@ -17,5 +17,6 @@ angular.module('LeerlingPresentatieCtrl', []).controller('LeerlingPresentatieCon
          $location.path( '/' );
       };
 
+      document.body.style.background = "#F4FA58 url('../img/Logo.png') no-repeat right top"
 
-}]);
+      }]);

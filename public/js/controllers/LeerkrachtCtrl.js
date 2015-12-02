@@ -13,7 +13,7 @@ angular.module('LeerkrachtCtrl', []).controller('LeerkrachtController', ['$http'
                 });
         }
 
-        document.body.style.background = "#f3f3f3 url('../img/Achtergrond.png') no-repeat right top"
+        document.body.style.background = "#CEF6F5 url('../img/Achtergrond.png') no-repeat right top"
 
 
 

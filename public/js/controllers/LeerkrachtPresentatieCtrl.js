@@ -17,5 +17,5 @@ angular.module('LeerkrachtPresentatieCtrl', []).controller('LeerkrachtPresentati
          $location.path( '/BeheerLessen' );
       };
 
-
+  document.body.style.background = "#CEF6F5 url('../img/Achtergrond.png') no-repeat right top"
 }]);

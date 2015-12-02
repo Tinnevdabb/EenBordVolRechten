@@ -7,8 +7,10 @@ var models = require('../models/leerkracht');
 
         // LOGOUT LEERKRACHT==============================
         app.post('/logout', function(req, res) {
-          req.logout();
-          res.json({ redirect: '/logout' });
+          req.session.destroy(function (err) {
+                res.json({ redirect: '/logout' });
+               });
+
         });
 
 

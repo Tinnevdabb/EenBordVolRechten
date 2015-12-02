@@ -23,6 +23,8 @@ angular.module('VragenCtrl', []).controller('VragenController', ['$http', '$scop
 
               //using put not delete because delete doesnt allow req.body parameters
               $scope.deleteVraag = function(id) {
+                var answer= confirm("Are you sure you want to delete that question?");
+                if (answer){
               $http.put('/deleteVraag/' + id, {
                       lesID: $scope.lesID,
                   })
@@ -31,7 +33,10 @@ angular.module('VragenCtrl', []).controller('VragenController', ['$http', '$scop
                   })
                   .error(function(data) {
                       console.log('Error: ' + data);
-                  });
+                  });}
+                  else {
+                    alert("you chose not to delete the question");
+                  }
                 };
 
 }]);

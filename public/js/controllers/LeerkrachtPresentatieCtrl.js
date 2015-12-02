@@ -5,6 +5,8 @@ angular.module('LeerkrachtPresentatieCtrl', []) .config(['slickCarouselConfig', 
 
 .controller('LeerkrachtPresentatieController', ['$http', '$scope', '$routeParams','$location', function($http, $scope, $routeParams,$location)  {
 
+  document.body.style.background = "#CEF6F5 url";
+
   $scope.vragen=[];
 
 
@@ -27,14 +29,6 @@ angular.module('LeerkrachtPresentatieCtrl', []) .config(['slickCarouselConfig', 
            }
       });
 
-      $scope.SetPreview = function(vraag)
-          {
-              //here logic which can take object from diffrent location
-              console.log(vraag);
-              return vraag;
-          };
-
-
       $scope.slickConfig = {
         method: {},
         dots: true,
@@ -48,16 +42,28 @@ angular.module('LeerkrachtPresentatieCtrl', []) .config(['slickCarouselConfig', 
         },
         afterChange: function (event, slick, currentSlide, nextSlide) {
           console.log('after change');
-          if($scope.vragen[currentSlide].soort=="open"){
-               $scope.template = $scope.templates[0];
-           }else if($scope.vragen[currentSlide].soort=="meerkeuze"){
-               $scope.template = $scope.templates[2];
-           }else{
-             $scope.template = $scope.templates[1];
-           }
+          changeTemplate(currentSlide);
         }
       }
       };
+
+      var changeTemplate=function(currentSlide){
+        if($scope.vragen[currentSlide].soort=="open"){
+             $scope.template = $scope.templates[0];
+                console.log($scope.template);
+             document.body.style.background = "blue";
+         }else if($scope.vragen[currentSlide].soort=="meerkeuze"){
+             $scope.template = $scope.templates[2];
+                console.log($scope.template);
+             document.body.style.background = "pink";
+         }else{
+           $scope.template = $scope.templates[1];
+              console.log($scope.template);
+           document.body.style.background = "yellow";
+
+         }
+      };
+
           $scope.templates =
           [ { name: 'open', url: 'views/LeerkrachtPresentatie/LeerkrachtPresentatieOpen.html'},
           { name: 'cloud', url: 'views/LeerkrachtPresentatie/LeerkrachtPresentatieCloud.html'},

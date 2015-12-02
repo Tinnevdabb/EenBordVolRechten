@@ -5,7 +5,7 @@ var models = require('../models/leerkracht');
         // handle things like api calls
         // authentication routes
 
-        // LOGOUT ==============================
+        // LOGOUT LEERKRACHT==============================
         app.post('/logout', function(req, res) {
           req.logout();
           res.json({ redirect: '/logout' });
@@ -15,7 +15,7 @@ var models = require('../models/leerkracht');
         // show the login form
 
 
-        // LOGIN ===============================
+        // LOGIN lEERKRACHT===============================
 
         // process the login form
         app.post('/InlogLeerkracht', function(req, res, next) {
@@ -38,7 +38,7 @@ var models = require('../models/leerkracht');
             })(req, res);
           });
 
-          // SIGNUP =================================
+          // SIGNUP LEERKRACHT=================================
 
 		// process the signup form
 		app.post('/SignUp', function(req, res, next) {
@@ -61,5 +61,27 @@ var models = require('../models/leerkracht');
 		    })(req, res);
 		});
 
-  
+    // LOGOUT LEERLING==============================
+    app.post('/logoutLeerling', function(req, res) {
+
+        //code om sessie leerling te stoppen
+
+
+      res.json({ redirect: '/' });
+    });
+
+
+    // LOGIN lEERKLING===============================
+
+
+    app.post('/InlogLeerling', function(req, res, next) {
+
+
+            //code om sessie leerling te starten
+
+
+            
+      });
+
+
     };

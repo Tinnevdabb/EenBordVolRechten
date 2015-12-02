@@ -37,6 +37,10 @@
             templateUrl: 'views/LeerkrachtPresentatie.html',
             controller: 'LeerkrachtPresentatieController'
         })
+        .when('/LeerlingPresentatie/:lesID', {
+            templateUrl: 'views/LeerlingPresentatie.html',
+            controller: 'LeerlingPresentatieController'
+        })
         .otherwise({
                     templateUrl: '/views/home.html',
                     controller: 'MainController',

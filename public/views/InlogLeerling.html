@@ -3,7 +3,10 @@
        <a href="/"  class="btn btn-default">Home</a>
        <h1 class='col-md-12 text-center'>Leerling</h1>
          <div class='col-xs-offset-2 col-xs-8 col-md-offset-4 col-md-4 login-form-bg'>
-       <form ng-submit="InlogLeerling(data)"
+
+               <div growl></div> 
+
+       <form ng-submit="InlogLeerling()"
              style="margin-top:30px;">
 
              <div class="form-group">
@@ -14,7 +17,7 @@
                <input type="text"
                       class="form-control"
                       placeholder="Token"
-                      ng-model="data.token"></input>
+                      ng-model="token"></input>
                     </div>
            </div>
 
@@ -26,7 +29,7 @@
                <input type="text"
                       class="form-control"
                       placeholder="Voornaam"
-                      ng-model="data.voornaam"></input>
+                      ng-model="oornaam"></input>
                     </div>
            </div>
            <div class="form-group">
@@ -37,7 +40,7 @@
                <input type="text"
                       class="form-control"
                       placeholder="Achternaam"
-                      ng-model="data.achternaam"></input>
+                      ng-model="achternaam"></input>
                     </div>
            </div>
              <div class="form-group text-center">

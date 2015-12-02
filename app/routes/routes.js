@@ -7,7 +7,7 @@ var models = require('../models/leerkracht');
 
       //OPEN LES =====================================================
 
-      app.get('/api/LessenData/:les_id', isLoggedInAjax, function(req, res) {
+      app.get('/api/LessenData/:les_id', isLoggedIn, function(req, res) {
 
           models.Leerkracht.findById(req.user._id, function(err, leerkracht){
                 var les=leerkracht.lessen.id(req.params.les_id);
@@ -24,13 +24,17 @@ var models = require('../models/leerkracht');
       //PROTECT PAGES AND DATA ===============================================================
           app.get('/BeheerLessen',isLoggedIn);
           app.get('/BeheerVragen',isLoggedIn);
+          app.get('/BeheerVragen/:lesID',isLoggedIn);
+          app.get('/LeerkrachtPresentatie/:lesID',isLoggedIn);
 
-          app.get('/api/leerkrachtData', isLoggedInAjax, function(req, res) {
+          app.get('/LeerlingPresentatie');
+
+          app.get('/api/leerkrachtData', isLoggedIn, function(req, res) {
               console.log(req.user);
             return res.json(req.user);
         });
 
-        app.get('/api/lessenData', isLoggedInAjax, function(req, res) {
+        app.get('/api/lessenData', isLoggedIn, function(req, res) {
             console.log(req.user);
           return res.json(req.user);
       });
@@ -49,13 +53,7 @@ var models = require('../models/leerkracht');
     };
 
     // route middleware to ensure user is logged in - ajax get
-    function isLoggedInAjax(req, res, next) {
-        if (!req.isAuthenticated()) {
-            return res.json( { redirect: '/' } );
-        } else {
-            next();
-        }
-    }
+
 
     // route middleware to make sure a user is logged in
 function isLoggedIn(req, res, next) {

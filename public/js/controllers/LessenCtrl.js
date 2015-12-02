@@ -21,13 +21,18 @@ appLessen.controller('LessenController', ['$http', '$scope', '$routeParams','$lo
 
 
               $scope.deleteLes = function(id) {
+            var answer= confirm("Are you sure you want to delete a lesson?");
+            if (answer){
               $http.delete('/deleteLes/' + id)
                   .success(function(data) {
                       $scope.leerkracht = data;
                   })
                   .error(function(data) {
                       console.log('Error: ' + data);
-                  });
+                  });}
+                  else {
+                    alert("you chose not to delete the lesson");
+                  }
                 };
 
              $scope.bewerkLes=function(id){

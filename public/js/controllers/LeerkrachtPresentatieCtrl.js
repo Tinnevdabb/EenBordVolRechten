@@ -32,7 +32,7 @@ angular.module('LeerkrachtPresentatieCtrl', []) .config(['slickCarouselConfig', 
       $scope.slickConfig = {
         method: {},
         dots: true,
-        infinite: true,
+        infinite: false,
         slidesToShow: 1 ,
         slidesToScroll: 1,
         event: {

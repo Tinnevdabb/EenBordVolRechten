@@ -8,7 +8,7 @@ angular.module('LeerkrachtPresentatieCtrl', []) .config(['slickCarouselConfig', 
   document.body.style.background = "#CEF6F5 url";
 
   $scope.vragen=[];
-
+  $scope.currentVraag=0;
 
 
 
@@ -27,6 +27,13 @@ angular.module('LeerkrachtPresentatieCtrl', []) .config(['slickCarouselConfig', 
              console.log("multi");
              $scope.template = $scope.templates[1];
            }
+           $http.post('/activateVraag', {
+                   les_id:   $scope.lesID,
+                   currentVraag_id:$scope.vragen[0]._id,
+               })
+               .success(function(data) {
+               });
+
       });
 
       $scope.slickConfig = {
@@ -38,10 +45,10 @@ angular.module('LeerkrachtPresentatieCtrl', []) .config(['slickCarouselConfig', 
         event: {
         beforeChange: function (event, slick, currentSlide, nextSlide) {
           console.log('beforeChange');
-
         },
         afterChange: function (event, slick, currentSlide, nextSlide) {
           console.log('after change');
+            $scope.currentVraag=currentSlide;
           if($scope.vragen[currentSlide].soort=="open"){
             $scope.$apply(function () {
                $scope.template = $scope.templates[0];
@@ -58,6 +65,13 @@ angular.module('LeerkrachtPresentatieCtrl', []) .config(['slickCarouselConfig', 
                });
                 console.log($scope.template);
            }
+           $http.post('/changeActiefVraag', {
+                   les_id:   $scope.lesID,
+                   currentVraag_id:$scope.vragen[currentSlide]._id,
+                   previousVraag_id:$scope.vragen[currentSlide-1]._id
+               })
+               .success(function(data) {
+               });
         }
       }
       };
@@ -75,6 +89,12 @@ angular.module('LeerkrachtPresentatieCtrl', []) .config(['slickCarouselConfig', 
             $http.post('/StopLeerkrachtPresentatie/'+id)
                 .success(function(data) {
                 });
+                $http.post('/deactivateVraag', {
+                        les_id:   $scope.lesID,
+                        currentVraag_id:$scope.vragen[$scope.currentVraag]._id
+                    })
+                    .success(function(data) {
+                    });
           };
 
 

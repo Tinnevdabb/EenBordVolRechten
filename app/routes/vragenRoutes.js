@@ -26,6 +26,7 @@ app.post('/addVraag', function(req, res, next) {
 
     newVraag.save(function (err){
         if (err) {
+          return res.json({ error: 'error saving new vraag' });
              console.log('error saving new vraag');
              console.log(err);
          }
@@ -33,11 +34,12 @@ app.post('/addVraag', function(req, res, next) {
                console.log('new vraag saved successfully');
 
                models.Leerkracht.findById(req.user._id, function(err, leerkracht){
-                  leerkracht.lessen.id(req.body.lesID).vragen.push(newVraag);          
+                  leerkracht.lessen.id(req.body.lesID).vragen.push(newVraag);
 
 
                    leerkracht.save(function (err){
                        if (err) {
+                         return res.json({ error: 'error adding new vraag to list' });
                        console.log('error adding new vraag to list');
                        console.log(err);
                        }
@@ -55,6 +57,7 @@ app.post('/addVraag', function(req, res, next) {
 
     //DELETE VRAAG=======================================================================
 
+      //using put not delete because delete doesnt allow req.body parameters
     app.put('/deleteVraag/:vraag_id', function(req, res,next) {
 
       models.Leerkracht.findById(req.user._id, function(err, leerkracht){
@@ -63,6 +66,7 @@ app.post('/addVraag', function(req, res, next) {
 
           leerkracht.save(function (err){
               if (err) {
+                return res.json({ error: 'error deleting les from list' });
               console.log('error deleting les from list');
               console.log(err);
               }

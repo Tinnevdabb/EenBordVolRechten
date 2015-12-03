@@ -72,7 +72,9 @@ angular.module('LeerkrachtPresentatieCtrl', []) .config(['slickCarouselConfig', 
 
 
           $scope.stopLes=function(id){
-             $location.path( '/BeheerLessen' );
+            $http.post('/StopLeerkrachtPresentatie/'+id)
+                .success(function(data) {
+                });
           };
 
 

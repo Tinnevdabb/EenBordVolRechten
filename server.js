@@ -45,6 +45,7 @@ require('./app/routes/routes')(app, passport); // configure our routes
 require('./app/routes/lessenRoutes')(app, passport); // configure our routes
 require('./app/routes/loginRoutes')(app, passport); // configure our routes
 require('./app/routes/vragenRoutes')(app, passport); // configure our routes
+require('./app/routes/presentatieRoutes')(app, passport); // configure our routes
 
 
 // start app ===============================================

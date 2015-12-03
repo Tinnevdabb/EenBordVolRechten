@@ -40,7 +40,10 @@ appLessen.controller('LessenController', ['$http', '$scope', '$routeParams','$lo
              };
 
              $scope.startLes=function(id){
-                $location.path( '/LeerkrachtPresentatie/'+ id );
+               $http.post('/StartLeerkrachtPresentatie/'+id)
+                   .success(function(data) {
+                   });
+                //$location.path( '/LeerkrachtPresentatie/'+ id );
              };
 
 

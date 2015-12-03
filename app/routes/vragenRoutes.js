@@ -33,7 +33,7 @@ app.post('/addVraag', function(req, res, next) {
                console.log('new vraag saved successfully');
 
                models.Leerkracht.findById(req.user._id, function(err, leerkracht){
-                  leerkracht.lessen.id(req.body.lesID).vragen.push(newVraag);
+                  leerkracht.lessen.id(req.body.lesID).vragen.push(newVraag);          
 
 
                    leerkracht.save(function (err){

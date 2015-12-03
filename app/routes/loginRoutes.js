@@ -78,7 +78,18 @@ var models = require('../models/leerkracht');
 
     app.post('/InlogLeerling', function(req, res, next) {
 
+            /*var leerkrachtID= models.Lessen.find({token:req.body.token}).leerkrachtID;
+              var lesID=models.Lessen.find({token:req.body.token})._id;
+             models.Leerkracht.findById(req.user._id, function(err, leerkracht){
 
+
+             i(actief==true){
+             var les=leerkracht.lessen.id(req.body.lesID);
+             return  res.json(les);
+           }else{
+             return res.json({ error: 'les nog niet actief' });
+         }
+             */
             //code om sessie leerling te starten
             res.cookie("name: ",req.body.voornaam+req.body.achternaam);
 

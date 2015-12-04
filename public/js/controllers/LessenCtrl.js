@@ -50,24 +50,27 @@ appLessen.controller('LessenController', ['$http', '$scope', '$routeParams','$lo
                $http.get('/api/LessenData/' + id)
                    .success(function(data) {
                      var stringLes = JSON.stringify(data, null, 2);
+                     var fileName = naam+".txt";
+                     var blob = new Blob([stringLes], {
+                				"type": "data:text/plain;charset=utf-8,"
+                			});
                      var downloadLink = document.createElement('a');
                      document.body.appendChild(downloadLink); //required in FF, optional for Chrome
-                      downloadLink.href = 'data:text/plain;charset=utf-8,' + encodeURIComponent(stringLes);
-                      downloadLink.download = naam+".txt";
-                      downloadLink.target="_self"; //required in FF, optional for Chrome
+                      if(downloadLink.download !== undefined) {
+                      downloadLink.setAttribute('href', window.URL.createObjectURL(blob));
+                      downloadLink.setAttribute('download', fileName);
+                      downloadLink.setAttribute('target', "_self");//required in FF, optional for Chrome
                       downloadLink.style.display = 'none';
+                    }else if(navigator.msSaveBlob) { // IE 10+
+                          downloadLink.setAttribute("href", "#");
+                          downloadLink.addEventListener("click", function(event) {
+                            navigator.msSaveBlob(blob, fileName);
+                          }, false);
+                        }
 
-                      downloadLink.onclick = function (event) {
-                             document.body.removeChild(event.target);
-                         };
+                      downloadLink.click();
 
-                         var clk = document.createEvent("MouseEvent");
-                         clk.initEvent("click", true, true);
-                         downloadLink.dispatchEvent(clk);
-
-                         document.body.appendChild(downloadLink);
-                         downloadLink.dispatchEvent(clk);
-
+                      document.body.removeChild(downloadLink);
                    });
 
              }

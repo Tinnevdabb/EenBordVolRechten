@@ -33,6 +33,10 @@
             templateUrl: 'views/BeheerVragen.html',
             controller: 'VragenController'
         })
+        .when('/BewerkVragen/:lesID/:vraagID', {
+            templateUrl: 'views/BewerkVragen.html',
+            controller: 'BewerkVragenController'
+        })
         .when('/LeerkrachtPresentatie/:lesID', {
             templateUrl: 'views/LeerkrachtPresentatie.html',
             controller: 'LeerkrachtPresentatieController'

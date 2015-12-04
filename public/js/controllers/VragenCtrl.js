@@ -1,4 +1,4 @@
-angular.module('VragenCtrl', []).controller('VragenController', ['$http', '$scope', '$routeParams', function($http, $scope,$routeParams) {
+angular.module('VragenCtrl', []).controller('VragenController', ['$http', '$scope', '$routeParams', '$location', function($http, $scope,$routeParams, $location) {
         $scope.lesID = $routeParams.lesID;
         console.log($scope.lesID);
 
@@ -37,6 +37,11 @@ angular.module('VragenCtrl', []).controller('VragenController', ['$http', '$scop
                   else {
                     alert("you chose not to delete the question");
                   }
+                };
+
+
+                $scope.bewerkVraag=function(vraagID){
+                   $location.path( '/BewerkVragen/'+ $scope.lesID +'/'+vraagID);
                 };
 
 

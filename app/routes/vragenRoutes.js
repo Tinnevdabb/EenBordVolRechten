@@ -13,9 +13,10 @@ app.post('/addVraag', function(req, res, next) {
     var curr_year = now.getFullYear();
     var curr_Month = now.getMonth() + 1;
     var curr_date = now.getDate();
-    var curr_hour=now.getHours()+1;
+    var curr_hour=now.getHours();
     var curr_min=now.getMinutes()+1;
     var todayDate =  (curr_Month + "/" +  curr_date + "/" + curr_year+" "+curr_hour+":"+curr_min);
+
 
     var newVraag=new models.Vraag();
     newVraag.vraag=req.body.vraag;

@@ -14,8 +14,8 @@ var antwoordSchema=new Schema({
  var vraagSchema=new Schema({
    vraag : {type : String, required: true,},
    soort: {type : String},
-   aangemaakt:  { type: Date },
-   bewerkt: { type: Date },
+   aangemaakt:  { type: String },
+   bewerkt: { type: String },
    antwoorden:[antwoordSchema],
    actief:{type:Boolean},
    oplossingen:[String]
@@ -25,8 +25,8 @@ var antwoordSchema=new Schema({
    naam : {type : String, required: true},
    leerkrachtID:{type : String},
    vragen:[vraagSchema],
-   aangemaakt:  { type: Date },
-   bewerkt: { type: Date },
+   aangemaakt:  { type: String },
+   bewerkt: { type: String },
    token: {type: String },
    actief:{type:Boolean}
  },{ collection: 'lessen' },{_id: true});

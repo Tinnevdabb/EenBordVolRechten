@@ -50,16 +50,17 @@ appLessen.controller('LessenController', ['$http', '$scope', '$routeParams','$lo
                $http.get('/api/LessenData/' + id)
                    .success(function(data) {
                      var stringLes = JSON.stringify(data, null, 2);
-                     var element = document.createElement('a');
-                      element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(stringLes));
-                      element.setAttribute('download', naam+".txt");
+                     var downloadLink = document.createElement('a');
+                     document.body.appendChild(downloadLink); //required in FF, optional for Chrome
+                      downloadLink.href = 'data:text/plain;charset=utf-8,' + encodeURIComponent(stringLes);
+                      downloadLink.download = naam+".txt";
+                      downloadLink.target="_self"; //required in FF, optional for Chrome
 
-                      element.style.display = 'none';
-                      document.body.appendChild(element);
+                      downloadLink.style.display = 'none';
 
-                      element.click();
+                      downloadLink.click();
 
-                      document.body.removeChild(element);
+                      document.body.removeChild(downloadLink);
                    });
 
              }

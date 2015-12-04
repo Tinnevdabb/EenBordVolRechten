@@ -39,4 +39,5 @@ angular.module('VragenCtrl', []).controller('VragenController', ['$http', '$scop
                   }
                 };
 
+
 }]);

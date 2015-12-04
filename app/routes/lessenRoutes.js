@@ -25,6 +25,7 @@ var models = require('../models/leerkracht');
       newLes.bewerkt=todayDate;
       newLes.token=hashK;
       newLes.actief=false;
+      newLes.leerkrachtID=req.user._id;
 
       newLes.save(function (err){
           if (err) {

@@ -4,15 +4,12 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema,
  bcrypt   = require('bcrypt-nodejs');
 
-var leerlingSchema=new Schema({
-  voornaam : {type : String, required: true},
-  achternaam : {type : String, required: true}
-});
 
 var antwoordSchema=new Schema({
-  leerling:[leerlingSchema],
-  antwoord:{type:String}
-},{_id: true});
+  voornaam : {type : String, required: true},
+  achternaam : {type : String, required: true},
+  antwoord:{type:String, required: true}
+},{ collection: 'antwoorden' },{_id: true});
 
  var vraagSchema=new Schema({
    vraag : {type : String, required: true,},
@@ -20,11 +17,13 @@ var antwoordSchema=new Schema({
    aangemaakt:  { type: Date },
    bewerkt: { type: Date },
    antwoorden:[antwoordSchema],
-   actief:{type:Boolean}
+   actief:{type:Boolean},
+   oplossingen:[String]
  },{ collection: 'vragen' },{_id: true});
 
  var lesSchema=new Schema({
    naam : {type : String, required: true},
+   leerkrachtID:{type : String},
    vragen:[vraagSchema],
    aangemaakt:  { type: Date },
    bewerkt: { type: Date },
@@ -60,13 +59,11 @@ var Leerkracht = mongoose.model('Leerkracht', leerkrachtSchema);
 var Les = mongoose.model('Les', lesSchema);
 var Vraag = mongoose.model('Vraag', vraagSchema);
 var Antwoord = mongoose.model('Antwoord', antwoordSchema);
-var Leerling = mongoose.model('Leerling', leerlingSchema);
 
 // module.exports allows us to pass this to other files when it is called
 module.exports ={
   Leerkracht: Leerkracht,
     Les: Les,
     Vraag: Vraag,
-    Antwoord:Antwoord,
-    Leerling:Leerling
+    Antwoord:Antwoord
   } ;

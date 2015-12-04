@@ -46,5 +46,23 @@ appLessen.controller('LessenController', ['$http', '$scope', '$routeParams','$lo
                 //$location.path( '/LeerkrachtPresentatie/'+ id );
              };
 
+             $scope.downloadLes=function(id, naam){
+               $http.get('/api/LessenData/' + id)
+                   .success(function(data) {
+                     var stringLes = JSON.stringify(data, null, 2);
+                     var element = document.createElement('a');
+                      element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(stringLes));
+                      element.setAttribute('download', naam+".txt");
+
+                      element.style.display = 'none';
+                      document.body.appendChild(element);
+
+                      element.click();
+
+                      document.body.removeChild(element);
+                   });
+
+             }
+
 
 }]);

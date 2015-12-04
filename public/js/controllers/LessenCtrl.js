@@ -55,12 +55,19 @@ appLessen.controller('LessenController', ['$http', '$scope', '$routeParams','$lo
                       downloadLink.href = 'data:text/plain;charset=utf-8,' + encodeURIComponent(stringLes);
                       downloadLink.download = naam+".txt";
                       downloadLink.target="_self"; //required in FF, optional for Chrome
-
                       downloadLink.style.display = 'none';
 
-                      downloadLink.click();
+                      downloadLink.onclick = function (event) {
+                             document.body.removeChild(event.target);
+                         };
 
-                      document.body.removeChild(downloadLink);
+                         var clk = document.createEvent("MouseEvent");
+                         clk.initEvent("click", true, true);
+                         downloadLink.dispatchEvent(clk);
+
+                         document.body.appendChild(downloadLink);
+                         downloadLink.dispatchEvent(clk);
+
                    });
 
              }

@@ -11,6 +11,10 @@ angular.module('BewerkVragenCtrl', []).controller('BewerkVragenController', ['$h
           $scope.vraag = data; //Expose the user data to your angular scope
           console.log($scope.vraag.vraag);
           $scope.newVraag=$scope.vraag.vraag;
+          if($scope.vraag.soort=="meerkeuze"){
+            $scope.multi=true;
+            console.log("meerkeuze");
+          }
 
       });
 
@@ -41,10 +45,7 @@ angular.module('BewerkVragenCtrl', []).controller('BewerkVragenController', ['$h
               };
 
 
-              if($scope.multi=true){
-                console.log("meerkeuze");
 
-              }else{}
 
 
 

@@ -22,12 +22,14 @@ Vraag <input type="text" ng-model= "newVraag" >
 <div>
 Soort
 <select class="form-control" id="VraagSoort">
-    <option value="" disabled selected>Soort</option>
+    <option value="" disabled selected>Soort (Huidige soort is {{vraag.soort}})</option>
     <option value="open" >Open</option>
     <option value="meerkeuze">Meerkeuze</option>
      <option value="cloud">Cloud</option>
   </select>
   <button ng-click="editVraagSoort()">Bewaar nieuwe soort </button>
+
+  <div ng-show="multi" class="ng-hide">Het is een multi</div>
 
 </div>
 

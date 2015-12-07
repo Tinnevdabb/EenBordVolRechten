@@ -19,20 +19,22 @@ var models = require('../models/leerkracht');
                 });
           });
 
+
+
           //OPEN VRAAG =====================================================
 
-          app.get('/api/LessenData/:les_id/:vraag_id', isLoggedIn, function(req, res) {
+                   app.get('/api/LessenData/:les_id/:vraag_id', isLoggedIn, function(req, res) {
 
-              models.Leerkracht.findById(req.user._id, function(err, leerkracht){
-                    var vraag=leerkracht.lessen.id(req.params.les_id).vragen.id(req.params.vraag_id);
-
-
-                    console.log(req.user);
-                  return res.json(vraag);
+                       models.Leerkracht.findById(req.user._id, function(err, leerkracht){
+                             var vraag=leerkracht.lessen.id(req.params.les_id).vragen.id(req.params.vraag_id);
 
 
-                    });
-              });
+                             console.log(req.user);
+                           return res.json(vraag);
+
+
+                             });
+                       });
 
 
       //PROTECT PAGES AND DATA ===============================================================
@@ -40,6 +42,7 @@ var models = require('../models/leerkracht');
           app.get('/BeheerVragen',isLoggedIn);
           app.get('/BeheerVragen/:lesID',isLoggedIn);
           app.get('/LeerkrachtPresentatie/:lesID',isLoggedIn);
+          app.get('/BewerkVragen/:lesID/:vraagID',isLoggedIn);
 
           app.get('/LeerlingPresentatie');
 

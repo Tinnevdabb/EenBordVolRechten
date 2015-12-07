@@ -96,12 +96,9 @@ app.post('/addVraag', function(req, res, next) {
                        console.log('error adding new vraag to list');
                        console.log(err);
                        }
+                       return  res.json({ success: 'vraag geupdate' });
 
-                       return  res.json({redirect:'/BewerkVragen/'+ req.body.lesID +'/'+ req.body.vraagID});
                    });
-
-
-
           });
 
     });

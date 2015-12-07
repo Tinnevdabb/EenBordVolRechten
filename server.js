@@ -31,6 +31,7 @@ var db = require('./config/db');// config files
 
 
 
+
 // required for passport
 app.use(session({secret: 'hello'}));
 app.use(passport.initialize());

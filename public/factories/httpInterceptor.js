@@ -14,7 +14,9 @@
                             return {} || $q.when(response);
                         } else if (response.data.error) {
                             growl.addErrorMessage(response.data.error);
-                        }
+                        }else if (response.data.success){
+                            growl.addSuccessMessage(response.data.success);
+                          }
                     }
                     return response || $q.when(response);
                 }

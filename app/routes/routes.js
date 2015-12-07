@@ -19,7 +19,22 @@ var models = require('../models/leerkracht');
                 });
           });
 
-      
+          //OPEN VRAAG =====================================================
+
+          app.get('/api/LessenData/:les_id/:vraag_id', isLoggedIn, function(req, res) {
+
+              models.Leerkracht.findById(req.user._id, function(err, leerkracht){
+                    var vraag=leerkracht.lessen.id(req.params.les_id).vragen.id(req.params.vraag_id);
+
+
+                    console.log(req.user);
+                  return res.json(vraag);
+
+
+                    });
+              });
+
+
       //PROTECT PAGES AND DATA ===============================================================
           app.get('/BeheerLessen',isLoggedIn);
           app.get('/BeheerVragen',isLoggedIn);

@@ -81,5 +81,28 @@ app.post('/addVraag', function(req, res, next) {
 
 
     //BEWERKVRAAG =============================================
+    app.post('/editVraag', function(req, res, next) {
 
+      if (!req.body.vraag) {
+        return res.json({ error: 'Vul aub vraag in' });
+    }
+    models.Leerkracht.findById(req.user._id, function(err, leerkracht){
+          var vraag=leerkracht.lessen.id(req.body.lesID).vragen.id(req.body.vraagID);
+          vraag.vraag=req.body.vraag;
+          console.log(req.body.vraag);
+          leerkracht.save(function (err){
+                       if (err) {
+                         return res.json({ error: 'error adding new vraag to list' });
+                       console.log('error adding new vraag to list');
+                       console.log(err);
+                       }
+
+                       return  res.json({redirect:'/BewerkVragen/'+ req.body.lesID +'/'+ req.body.vraagID});
+                   });
+
+
+
+          });
+
+    });
   };

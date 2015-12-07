@@ -77,6 +77,28 @@ var models = require('../models/leerkracht');
 
 
     app.post('/InlogLeerling', function(req, res, next) {
+var LesId;
+var LeerkrachtId;
+models.Les.findOne({token: req.body.token}, function(err,les)
+{
+  if (err)
+  {
+    throw(err);
+  }
+  else {
+LesId=les._id;
+LeerkrachtId=les.leerkrachtID;
+models.Leerkracht.findById(LeerkrachtId,function(err,leerkracht)
+{
+  if(leerkracht.lessen.id(LesId).actief)
+  {
+    res.cookie("name: ",req.body.voornaam+req.body.achternaam);
+
+    res.json({ redirect: '/LeerlingPresentatie' });
+  }
+})
+  }
+});
 
             /*var leerkrachtID= models.Lessen.find({token:req.body.token}).leerkrachtID;
               var lesID=models.Lessen.find({token:req.body.token})._id;
@@ -91,9 +113,6 @@ var models = require('../models/leerkracht');
          }
              */
             //code om sessie leerling te starten
-            res.cookie("name: ",req.body.voornaam+req.body.achternaam);
-
-            res.json({ redirect: '/LeerlingPresentatie' });
 
 
 

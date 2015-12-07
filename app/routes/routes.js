@@ -20,6 +20,7 @@ var models = require('../models/leerkracht');
           });
 
 
+<<<<<<< Updated upstream
 
           //OPEN VRAAG =====================================================
 
@@ -37,6 +38,8 @@ var models = require('../models/leerkracht');
                        });
 
 
+=======
+>>>>>>> Stashed changes
       //PROTECT PAGES AND DATA ===============================================================
           app.get('/BeheerLessen',isLoggedIn);
           app.get('/BeheerVragen',isLoggedIn);
@@ -53,6 +56,7 @@ var models = require('../models/leerkracht');
 
         app.get('/api/lessenData', isLoggedIn, function(req, res) {
             console.log(req.user);
+            
           return res.json(req.user);
       });
 

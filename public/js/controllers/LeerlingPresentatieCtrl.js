@@ -15,6 +15,7 @@ angular.module('LeerlingPresentatieCtrl', []).controller('LeerlingPresentatieCon
 
       $scope.stopLes=function(id){
          $location.path( '/' );
+
       };
 
       document.body.style.background = "#F4FA58 url('../img/Logo.png') no-repeat right top"

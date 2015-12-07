@@ -18,6 +18,7 @@ angular.module('LeerkrachtPresentatieCtrl', []) .config(['slickCarouselConfig', 
           $scope.les = data; //Expose the user data to your angular scope
           $scope.vragen=data.vragen;
           if($scope.vragen[0].soort=="open"){
+            alert(data.token);
             console.log("open");
                $scope.template = $scope.templates[0];
            }else if($scope.vragen[0].soort=="meerkeuze"){

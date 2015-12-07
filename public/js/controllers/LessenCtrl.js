@@ -6,6 +6,11 @@ appLessen.controller('LessenController', ['$http', '$scope', '$routeParams','$lo
                 .success(function(data) {
                     $scope.leerkracht = data; //Expose the user data to your angular scope
                 });
+                $http.get('/api/LessenData/' + $scope.lesID)
+                    .success(function(data) {
+                        $scope.les = lesdata; //Expose the user data to your angular scope
+                    });
+
 
 
 
@@ -42,6 +47,7 @@ appLessen.controller('LessenController', ['$http', '$scope', '$routeParams','$lo
              $scope.startLes=function(id){
                $http.post('/StartLeerkrachtPresentatie/'+id)
                    .success(function(data) {
+
                    });
                 //$location.path( '/LeerkrachtPresentatie/'+ id );
              };

@@ -5,6 +5,7 @@ angular.module('VragenCtrl', []).controller('VragenController', ['$http', '$scop
         $http.get('/api/LessenData/' + $scope.lesID)
             .success(function(data) {
                 $scope.les = data; //Expose the user data to your angular scope
+                $scope.newLes=$scope.les.naam;
             });
 
         $scope.addVraag=function() {
@@ -43,6 +44,19 @@ angular.module('VragenCtrl', []).controller('VragenController', ['$http', '$scop
                 $scope.bewerkVraag=function(vraagID){
                    $location.path( '/BewerkVragen/'+ $scope.lesID +'/'+vraagID);
                 };
+
+
+                $scope.editLes=function(){
+                  $http.post('/editLes',{
+                    lesnaam:this.newLes, //this komt van html pagina
+                    lesID:$scope.lesID
+
+                  })
+                  .success(function(data) {
+                      $scope.les = data; //Expose the user data to your angular scope
+                  });
+                };
+
 document.body.style.background = "#CEF6F5 url('../img/Achtergrond.png') no-repeat right top"
 
 }]);

@@ -83,7 +83,7 @@ app.post('/addVraag', function(req, res, next) {
     //BEWERKVRAAG =============================================
     app.post('/editVraag', function(req, res, next) {
 
-      if (!req.body.vraag) {
+      if (req.body.vraag=="") {
         return res.json({ error: 'Vul aub vraag in' });
     }
     models.Leerkracht.findById(req.user._id, function(err, leerkracht){

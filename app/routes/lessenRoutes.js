@@ -89,5 +89,26 @@ var models = require('../models/leerkracht');
 
         });
 
+        //BEWERKLES =============================================
+        app.post('/editLes', function(req, res, next) {
+
+          if (req.body.lesnaam=="") {
+            return res.json({ error: 'Vul aub een les naam in.' });
+        }
+        models.Leerkracht.findById(req.user._id, function(err, leerkracht){
+              var les=leerkracht.lessen.id(req.body.lesID);
+              les.naam=req.body.lesnaam;
+              leerkracht.save(function (err){
+                           if (err) {
+                             return res.json({ error: 'error adding new lesnaam to list' });
+                           
+                           }
+                           return  res.json({ success: 'les geupdate' });
+
+                       });
+              });
+
+        });
+
 
 };

@@ -43,6 +43,6 @@ angular.module('VragenCtrl', []).controller('VragenController', ['$http', '$scop
                 $scope.bewerkVraag=function(vraagID){
                    $location.path( '/BewerkVragen/'+ $scope.lesID +'/'+vraagID);
                 };
-
+document.body.style.background = "#CEF6F5 url('../img/Achtergrond.png') no-repeat right top"
 
 }]);

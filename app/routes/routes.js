@@ -19,8 +19,7 @@ var models = require('../models/leerkracht');
                 });
           });
 
-
-
+      
       //PROTECT PAGES AND DATA ===============================================================
           app.get('/BeheerLessen',isLoggedIn);
           app.get('/BeheerVragen',isLoggedIn);

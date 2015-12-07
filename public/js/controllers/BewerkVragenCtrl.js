@@ -25,6 +25,21 @@ angular.module('BewerkVragenCtrl', []).controller('BewerkVragenController', ['$h
           });
         };
 
+        $scope.editVraagSoort=function() {
+            var e = document.getElementById("VraagSoort");
+          var soortValue = e.options[e.selectedIndex].value;
+          console.log(soortValue);
+                  $http.post('/editVraagSoort', {
+                          lesID: $scope.lesID,
+                          vraagID:$scope.vraagID,
+                          soort: soortValue
+
+                      })
+                      .success(function(data) {
+                        $scope.vraag = data;
+                      });
+              };
+
 
               if($scope.multi=true){
                 console.log("meerkeuze");

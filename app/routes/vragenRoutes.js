@@ -102,4 +102,27 @@ app.post('/addVraag', function(req, res, next) {
           });
 
     });
+
+    //BEWERKVRAAGSOORT =============================================
+    app.post('/editVraagSoort', function(req, res, next) {
+
+      if (!req.body.soort) {
+        return res.json({ error: 'Kies aub een soort' });
+    }
+    models.Leerkracht.findById(req.user._id, function(err, leerkracht){
+          var vraag=leerkracht.lessen.id(req.body.lesID).vragen.id(req.body.vraagID);
+          vraag.soort=req.body.soort;
+
+          leerkracht.save(function (err){
+                       if (err) {
+                         return res.json({ error: 'error edditing new soort to list' });
+                       console.log('error edditing new soort to list');
+                       console.log(err);
+                       }
+                       return  res.json({ success: 'soort geupdate' });
+
+                   });
+          });
+
+    });
   };

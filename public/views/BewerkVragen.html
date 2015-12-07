@@ -13,10 +13,25 @@
       </div>
   </nav>
 
-
+<div>
 Vraag <input type="text" ng-model= "newVraag" >
 
 <button ng-click="editVraag()">Bewaar nieuwe vraag </button>
+</div>
+
+<div>
+Soort
+<select class="form-control" id="VraagSoort">
+    <option value="" disabled selected>Soort</option>
+    <option value="open" >Open</option>
+    <option value="meerkeuze">Meerkeuze</option>
+     <option value="cloud">Cloud</option>
+  </select>
+  <button ng-click="editVraagSoort()">Bewaar nieuwe soort </button>
+
+</div>
+
+
 
 
 <div growl></div> <!--error message-->

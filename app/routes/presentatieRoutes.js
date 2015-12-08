@@ -60,6 +60,7 @@ var models = require('../models/leerkracht');
 
     //PRESENTATION CHANGE VRAAG ACTIEF=FALSE/TRUE ==========================================================================
     app.post('/changeActiefVraag', function(req, res,next) {
+      console.log("changing "+req.body.currentVraag_id+" to true");
 
       models.Leerkracht.findById(req.user._id, function(err, leerkracht){
           console.log("in leerkracht "+leerkracht._id);
@@ -72,6 +73,7 @@ var models = require('../models/leerkracht');
               console.log(err);
               }
               console.log("saved leerkracht ");
+                console.log("changing "+req.body.currentVraag_id+" to true is completed");
           });
       });
     });

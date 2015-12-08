@@ -39,7 +39,7 @@ angular.module('LeerkrachtPresentatieCtrl', []) .config(['slickCarouselConfig', 
 
       $scope.slickConfig = {
         method: {},
-        dots: true,
+        dots: false,
         infinite: false,
         slidesToShow: 1 ,
         slidesToScroll: 1,
@@ -67,13 +67,13 @@ angular.module('LeerkrachtPresentatieCtrl', []) .config(['slickCarouselConfig', 
                });
                 console.log($scope.template);
            }
-           $http.post('/changeActiefVraag', {
+           /*$http.post('/changeActiefVraag', {
                    les_id:   $scope.lesID,
                    currentVraag_id:$scope.vragen[currentSlide]._id,
                    previousVraag_id:$scope.vragen[currentSlide-1]._id
                })
                .success(function(data) {
-               });
+               });*/
         }
       }
       };

@@ -56,6 +56,21 @@ var models = require('../models/leerkracht');
                              });
                        });
 
+                       //GET ANTWOORDEN ================================================
+
+                           app.get('/api/AntwoordData/:les_id/:vraag_id', isLoggedIn, function(req, res) {
+
+                                 models.Leerkracht.findById(req.user._id, function(err, leerkracht){
+                                        var vraag=leerkracht.lessen.id(req.params.les_id).vragen.id(req.params.vraag_id);
+                                         console.log("getting antwoord data")
+
+                                         return res.json(vraag.antwoorden);
+
+
+                                       });
+                               });
+
+
 
       //PROTECT PAGES AND DATA ===============================================================
           app.get('/BeheerLessen',isLoggedIn);

@@ -1,4 +1,10 @@
 <section  ng-controller="LeerkrachtPresentatieOpenController">
   <h1>{{vraag.vraag}}</h1>
-open
+<div ng-repeat="antwoord in antwoorden">
+  {{antwoord.antwoord}}
+  {{antwoord.voornaam}}
+  {{antwoord.achternaam}}
+</div>
+<button ng-click="getAnswers()">Get Anwsers</button>
+
 </section>

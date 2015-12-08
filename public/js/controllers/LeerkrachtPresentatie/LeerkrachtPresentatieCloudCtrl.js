@@ -1,6 +1,7 @@
 angular.module('LeerkrachtPresentatieCloudCtrl', []).controller('LeerkrachtPresentatieCloudController', ['$http', '$scope', '$routeParams','$location', function($http, $scope, $routeParams,$location)  {
  $scope.words = [];
 
+
  //generates number between 5 and 15
  $scope.getRandomSpan = function(){
          return Math.floor((Math.random()*13)+1);

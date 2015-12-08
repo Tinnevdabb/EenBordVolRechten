@@ -6,6 +6,12 @@ angular.module('LeerlingPresentatieCtrl', []).controller('LeerlingPresentatieCon
           $scope.les = data; //Expose the user data to your angular scope
       });
 
+      $http.get('/leerlingdata')
+          .success(function(data) {
+              $scope.leerling = data; //Expose the user data to your angular scope
+              console.log($scope.leerling);
+          });
+
 
       $scope.templates =
    [ { name: 'open', url: 'views/LeerlingPresentatie/LeerlingPresentatieOpen.html'},
@@ -13,10 +19,6 @@ angular.module('LeerlingPresentatieCtrl', []).controller('LeerlingPresentatieCon
      { name: 'multi', url: 'views/LeerlingPresentatie/LeerlingPresentatieMulti.html'} ];
       $scope.template = $scope.templates[1];
 
-      $scope.stopLes=function(id){
-         $location.path( '/' );
-
-      };
 
       document.body.style.background = "#F4FA58 url('../img/Logo.png') no-repeat right top"
 

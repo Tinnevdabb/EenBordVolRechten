@@ -63,42 +63,39 @@ var models = require('../models/leerkracht');
 		    })(req, res);
 		});
 
-    // LOGOUT LEERLING==============================
-    app.post('/logoutLeerling', function(req, res) {
-
-        //code om sessie leerling te stoppen
-
-
-      res.json({ redirect: '/' });
-    });
-
 
     // LOGIN lEERLING===============================
 
 
     app.post('/InlogLeerling', function(req, res, next) {
-var LesId;
-var LeerkrachtId;
-models.Les.findOne({token: req.body.token}, function(err,les)
-{
-  if (err)
-  {
-    throw(err);
-  }
-  else {
-LesId=les._id;
-LeerkrachtId=les.leerkrachtID;
-models.Leerkracht.findById(LeerkrachtId,function(err,leerkracht)
-{
-  if(leerkracht.lessen.id(LesId).actief)
-  {
-    res.cookie("name: ",req.body.voornaam+req.body.achternaam);
+          var LesId;
+          var LeerkrachtId;
+          models.Les.findOne({token: req.body.token}, function(err,les)
+          {
+                if (err)
+                {
+                  throw(err);
+                }
+                else if (!les)
+                {
+                    return res.json({ error: 'Geen les met deze token gevonden' });
+                }else{
+                      LesId=les._id;
+                      LeerkrachtId=les.leerkrachtID;
+                      models.Leerkracht.findById(LeerkrachtId,function(err,leerkracht)
+                      {
+                        if(leerkracht.lessen.id(LesId).actief)
+                        {
+                          req.session.voornaam=req.body.voornaam;
+                          req.session.achternaam=req.body.achternaam;
 
-    res.json({ redirect: '/LeerlingPresentatie' });
-  }
-})
-  }
-});
+                          res.json({ redirect: '/LeerlingPresentatie' });
+                        }else{
+                          return res.json({ error: 'les nog niet actief' });
+                      }
+                      });
+                }
+          });
 
             /*var leerkrachtID= models.Lessen.find({token:req.body.token}).leerkrachtID;
               var lesID=models.Lessen.find({token:req.body.token})._id;

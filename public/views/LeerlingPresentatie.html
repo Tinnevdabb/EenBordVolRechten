@@ -1,5 +1,5 @@
 <section  ng-controller="LeerlingPresentatieController">
-    <button ng-click="stopLes(les._id)" class="btn btn-danger">Stop Les</button>
+  <a logout href="/logout"  class="btn btn-danger"></span>Stop les</a>
     <div ng-repeat="vraag in les.vragen">
       <h1>{{vraag.vraag}}</h1>
          <div ng-include="template.url"></div>

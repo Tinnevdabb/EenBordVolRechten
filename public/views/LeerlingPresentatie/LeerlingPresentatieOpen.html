@@ -1,4 +1,8 @@
 <section  ng-controller="LeerlingPresentatieOpenController">
   <h1>{{vraag.vraag}}</h1>
-open
+  open
+  <input type="text" ng-model="antwoord" />
+  <button ng-click="addAntwoord()"> Voeg toe</button>
+  <div growl></div>
+
 </section>

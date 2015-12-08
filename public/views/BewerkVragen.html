@@ -29,14 +29,42 @@ Soort
   </select>
   <button ng-click="editVraagSoort()">Bewaar nieuwe soort </button>
 
-  <div ng-show="multi" class="ng-hide">Het is een multi</div>
+  <div class="table-responsive" ng-show="multi" class="ng-hide">
+      <table class="table table-hover ">
+        <thead>
+        <tr>
+          <th>Oplossing </th>
+          <th>Actie </th>
+        </tr>
+      </thead>
+
+        <tbody>
+          <tr ng-repeat="oplossing in vraag.oplossingen">
+              <td>{{ oplossing }}</td>
+              <td>
+                 <button ng-click="deleteAntwoord(antwoord._id)" class="btn btn-danger">
+                    <i class="glyphicon glyphicon-remove"> </i>
+                 </button>
+               </div>
+             </td>
+
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+              <td ><input type="text" ng-model="Oplossing" /></td>
+              <td><button ng-click="addOplossing()"> Voeg toe</button></td>
+            </tr>
+          </tfoot>
+  </table>
+  </div>
 
 </div>
 
-
-
-
 <div growl></div> <!--error message-->
+
+
+
 
 
 

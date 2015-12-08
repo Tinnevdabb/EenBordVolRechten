@@ -125,4 +125,28 @@ app.post('/addVraag', function(req, res, next) {
           });
 
     });
+
+    //BEWERKANTOORD =============================================
+    app.post('/addOplossing', function(req, res, next) {
+
+      if (!req.body.oplossing) {
+        return res.json({ error: 'Vul aub een oplossing in' });
+    }
+    models.Leerkracht.findById(req.user._id, function(err, leerkracht){
+          leerkracht.lessen.id(req.body.lesID).vragen.id(req.body.vraagID).oplossingen.push(req.body.oplossing);
+
+
+          leerkracht.save(function (err){
+                       if (err) {
+                         return res.json({ error: 'error adding new oplossing' });
+                       console.log('error adding new oplossing');
+                       console.log(err);
+                       }
+                       var vraag = leerkracht.lessen.id(req.body.lesID).vragen.id(req.body.vraagID);
+                       return  res.json(vraag);
+
+                   });
+          });
+
+    });
   };

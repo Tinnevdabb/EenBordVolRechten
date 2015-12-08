@@ -45,6 +45,40 @@ angular.module('BewerkVragenCtrl', []).controller('BewerkVragenController', ['$h
               };
 
 
+              $scope.addOplossing = function() {
+
+                $http.post('/addOplossing/', {
+                  lesID:$scope.lesID,
+                  vraagID:$scope.vraagID,
+                  oplossing:this.Oplossing
+
+                })
+                    .success(function(data) {
+                        $scope.vraag = data;
+                        $scope.Oplossing = null;
+
+                    })
+
+                  };
+
+
+
+            /*$scope.deleteOplossing = function(id) {
+            var answer= confirm("Are you sure you want to delete an answer?");
+            if (answer){
+              $http.delete('/deleteOplossing/' + id)
+                  .success(function(data) {
+                      $scope.leerkracht = data;
+                  })
+                  .error(function(data) {
+                      console.log('Error: ' + data);
+                  });}
+                  else {
+                    alert("you chose not to delete the answer");
+                  }
+                };*/
+
+
 
 
 

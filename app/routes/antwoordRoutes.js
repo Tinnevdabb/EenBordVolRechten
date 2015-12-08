@@ -7,13 +7,13 @@ var models = require('../models/leerkracht');
           if (!req.body.antwoord) {
               return res.json({ error: 'Vul aub antwoord in' });
           }
-          models.Leerkracht.findById(req.session.leerkrachtID,function(err,leerkracht)
+        /*  models.Leerkracht.findById(req.session.leerkrachtID,function(err,leerkracht)
           {
             if(!leerkracht.lessen.id(req.session.lesID).vragen.id(req.body.vraagID).actief)
             {
               return res.json({ error: 'vraag is niet actief' });
           }
-        });
+        });*/
 
 
           var newAntwoord=new models.Antwoord();

@@ -1,3 +1,7 @@
 <section  ng-controller="LeerlingPresentatieCloudController">
-<jqcloud words="words" width="500" height="350" steps="7"></jqcloud>
+  <h1>{{vraag.vraag}}</h1>
+  cloud
+  <input type="text" ng-model="antwoord" />
+  <button ng-click="addAntwoord()"> Voeg toe</button>
+  <div growl></div>
 </section>

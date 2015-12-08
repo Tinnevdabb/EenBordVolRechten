@@ -1,6 +1,10 @@
 <section  ng-controller="LeerkrachtPresentatieMultiController">
   <h1>{{vraag.vraag}}</h1>
 Multi
+<div ng-repeat="result in results">
+  {{result.opl}}
+{{result.aantal}}
+</div>
 <button ng-click="getAnswers()">Get Anwsers</button>
 
 </section>

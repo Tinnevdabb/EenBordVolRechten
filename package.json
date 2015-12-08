@@ -1,5 +1,6 @@
 {
   "name": "EenBordVolRechten",
+  "author": "Hannelore Tinne Anzhelina",
   "main": "server.js",
   "dependencies": {
     "body-parser": "~1.4.2",

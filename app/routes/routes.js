@@ -19,6 +19,17 @@ var models = require('../models/leerkracht');
                 });
           });
 
+                app.get('/api/LessenDataLeerling/:les_id', function(req, res) {
+
+                    models.Leerkracht.findById(req.session.leerkrachtID, function(err, leerkracht){
+                          var les=leerkracht.lessen.id(req.params.les_id);
+
+                          console.log(req.user);
+                        return res.json(les);
+
+
+                          });
+                    });
           //OPEN LES =====================================================
 
           app.get('/leerlingdata', function(req, res) {

@@ -16,7 +16,7 @@ var models = require('../models/leerkracht');
               console.log(err);
               }
               console.log("saved leerkracht ");
-                res.json({ redirect: '/LeerkrachtPresentatie/'+req.params.les_id });
+              return   res.json({ redirect: '/LeerkrachtPresentatie/'+req.params.les_id });
           });
       });
     });
@@ -27,6 +27,7 @@ var models = require('../models/leerkracht');
       models.Leerkracht.findById(req.user._id, function(err, leerkracht){
           console.log("in leerkracht "+leerkracht._id);
           leerkracht.lessen.id(req.params.les_id).actief=false;
+            leerkracht.lessen.id(req.params.les_id).vragen.id(req.body.currentVraag_id).actief=false;
 
           leerkracht.save(function (err){
               if (err) {
@@ -34,7 +35,7 @@ var models = require('../models/leerkracht');
               console.log(err);
               }
               console.log("saved leerkracht ");
-                res.json({ redirect: '/BeheerLessen'});
+            return     res.json({ redirect: '/BeheerLessen'});
           });
       });
     });
@@ -56,21 +57,6 @@ var models = require('../models/leerkracht');
       });
     });
 
-    //PRESENTATION LAST VRAAG ACTIEF=FALSE ==========================================================================
-    app.post('/deactivateVraag', function(req, res,next) {
-
-      models.Leerkracht.findById(req.user._id, function(err, leerkracht){
-          console.log("in leerkracht "+leerkracht._id);
-          leerkracht.lessen.id(req.body.les_id).vragen.id(req.body.currentVraag_id).actief=false;
-          leerkracht.save(function (err){
-              if (err) {
-              console.log('error deleting les from list');
-              console.log(err);
-              }
-              console.log("saved leerkracht ");
-          });
-      });
-    });
 
     //PRESENTATION CHANGE VRAAG ACTIEF=FALSE/TRUE ==========================================================================
     app.post('/changeActiefVraag', function(req, res,next) {

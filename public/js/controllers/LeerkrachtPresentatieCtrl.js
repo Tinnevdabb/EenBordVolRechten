@@ -17,8 +17,8 @@ angular.module('LeerkrachtPresentatieCtrl', []) .config(['slickCarouselConfig', 
       .success(function(data) {
           $scope.les = data; //Expose the user data to your angular scope
           $scope.vragen=data.vragen;
-          if($scope.vragen[0].soort=="open"){
             alert(data.token);
+          if($scope.vragen[0].soort=="open"){
             console.log("open");
                $scope.template = $scope.templates[0];
            }else if($scope.vragen[0].soort=="meerkeuze"){
@@ -88,15 +88,12 @@ angular.module('LeerkrachtPresentatieCtrl', []) .config(['slickCarouselConfig', 
 
 
           $scope.stopLes=function(id){
-            $http.post('/StopLeerkrachtPresentatie/'+id)
+            $http.post('/StopLeerkrachtPresentatie/'+id, {
+                    currentVraag_id:$scope.vragen[$scope.currentVraag]._id
+                })
                 .success(function(data) {
                 });
-                $http.post('/deactivateVraag', {
-                        les_id:   $scope.lesID,
-                        currentVraag_id:$scope.vragen[$scope.currentVraag]._id
-                    })
-                    .success(function(data) {
-                    });
+
           };
 
 

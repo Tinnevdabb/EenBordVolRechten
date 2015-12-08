@@ -6,10 +6,6 @@ appLessen.controller('LessenController', ['$http', '$scope', '$routeParams','$lo
                 .success(function(data) {
                     $scope.leerkracht = data; //Expose the user data to your angular scope
                 });
-                $http.get('/api/LessenData/' + $scope.lesID)
-                    .success(function(data) {
-                        $scope.les = lesdata; //Expose the user data to your angular scope
-                    });
 
 
 

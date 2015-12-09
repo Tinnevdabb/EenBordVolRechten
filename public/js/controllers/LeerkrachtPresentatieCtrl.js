@@ -5,7 +5,7 @@ angular.module('LeerkrachtPresentatieCtrl', []) .config(['slickCarouselConfig', 
 
 .controller('LeerkrachtPresentatieController', ['$http', '$scope', '$routeParams','$location', function($http, $scope, $routeParams,$location)  {
 
-  document.body.style.background = "#CEF6F5 url";
+  document.body.style.background = "#CEF6F5";
 
   $scope.vragen=[];
   $scope.currentVraag=0;

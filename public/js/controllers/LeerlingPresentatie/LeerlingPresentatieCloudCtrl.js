@@ -5,6 +5,6 @@ angular.module('LeerlingPresentatieCloudCtrl', []).controller('LeerlingPresentat
       vraagID:$scope.vraag._id
     });
   };
-document.body.style.background = "#F4FA58 url"
+document.body.style.background = "#F4FA58"
 
 }]);

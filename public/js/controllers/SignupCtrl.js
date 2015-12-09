@@ -13,4 +13,6 @@ angular.module('SignupCtrl', []).controller('SignupController', ['$http', '$scop
                       console.log(data);
                   });
           }
+          document.body.style.background = "#CEF6F5 url('../img/Achtergrond.png') no-repeat right top"
+
       }]);

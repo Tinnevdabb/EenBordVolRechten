@@ -73,7 +73,7 @@ angular.module('BewerkVragenCtrl', []).controller('BewerkVragenController', ['$h
 
               })
                   .success(function(data) {
-                      $scope.leerkracht = data;
+                      $scope.vraag = data;
                   })
                   .error(function(data) {
                       console.log('Error: ' + data);

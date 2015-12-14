@@ -168,8 +168,8 @@ app.post('/addVraag', function(req, res, next) {
     app.put('/deleteOplossing', function(req, res, next) {
       console.log('in /deleteOplossing')
     models.Leerkracht.findById(req.user._id, function(err, leerkracht){
-          var opl = leerkracht.lessen.id(req.body.lesID).vragen.id(req.body.vraagID).oplossingen.id(req.body.oplossingID);
-          console.log(opl);
+          leerkracht.lessen.id(req.body.lesID).vragen.id(req.body.vraagID).oplossingen.id(req.body.oplossingID).remove();
+
 
           leerkracht.save(function (err){
                        if (err) {

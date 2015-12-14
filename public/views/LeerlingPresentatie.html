@@ -1,8 +1,10 @@
 <section  ng-controller="LeerlingPresentatieController">
   <a logout href="/logout"  class="btn btn-danger"></span>Stop les</a>
+    <div class="slider">
       <slick settings="slickConfig" ng-if="vragen.length" data="vragen">
          <div ng-repeat="vraag in vragen"  >
               <div ng-include src="template.url"></div>
           </div>
     </slick>
+  </div>
 </section>

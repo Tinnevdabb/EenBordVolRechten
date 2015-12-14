@@ -36,7 +36,6 @@ body{
 
 .container {
   width: auto;
-  max-width: 680px;
   padding: 0 15px;
 }
 .container .text-muted {
@@ -53,6 +52,7 @@ body{
 
 }
 
-.table-responsive {
-
+.slider{
+  width:80%;
+  text-align: center
 }

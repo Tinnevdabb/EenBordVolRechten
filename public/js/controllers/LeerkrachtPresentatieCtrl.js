@@ -43,6 +43,7 @@ angular.module('LeerkrachtPresentatieCtrl', []) .config(['slickCarouselConfig', 
         infinite: false,
         slidesToShow: 1 ,
         slidesToScroll: 1,
+        respondTo:"min",
         prevArrow:"",
         event: {
         beforeChange: function (event, slick, currentSlide, nextSlide) {

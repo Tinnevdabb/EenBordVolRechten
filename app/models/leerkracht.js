@@ -13,7 +13,7 @@ var antwoordSchema=new Schema({
 
 var oplossingSchema=new Schema({
   oplossing:{type : String}
-},{ collection: 'vragen' },{_id: true});
+},{ collection: 'oplossingen' },{_id: true});
 
  var vraagSchema=new Schema({
    vraag : {type : String, required: true,},

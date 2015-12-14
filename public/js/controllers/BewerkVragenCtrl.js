@@ -45,7 +45,7 @@ angular.module('BewerkVragenCtrl', []).controller('BewerkVragenController', ['$h
               };
 
 
-              $scope.addOplossing = function() {
+              $scope.addOplossing = function(oplossing) {
 
                 $http.post('/addOplossing/', {
                   lesID:$scope.lesID,
@@ -63,10 +63,15 @@ angular.module('BewerkVragenCtrl', []).controller('BewerkVragenController', ['$h
 
 
 
-            /*$scope.deleteOplossing = function(id) {
+            $scope.deleteOplossing = function(oplID) {
             var answer= confirm("Are you sure you want to delete an answer?");
             if (answer){
-              $http.delete('/deleteOplossing/' + id)
+                $http.put('/deleteOplossing/', {
+                lesID:$scope.lesID,
+                vraagID:$scope.vraagID,
+                oplossingID:oplID
+
+              })
                   .success(function(data) {
                       $scope.leerkracht = data;
                   })
@@ -76,7 +81,7 @@ angular.module('BewerkVragenCtrl', []).controller('BewerkVragenController', ['$h
                   else {
                     alert("you chose not to delete the answer");
                   }
-                };*/
+                };
 
 
 

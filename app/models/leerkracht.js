@@ -11,6 +11,10 @@ var antwoordSchema=new Schema({
   antwoord:{type:String, required: true}
 },{ collection: 'antwoorden' },{_id: true});
 
+var oplossingSchema=new Schema({
+  oplossing:{type : String}
+},{ collection: 'vragen' },{_id: true});
+
  var vraagSchema=new Schema({
    vraag : {type : String, required: true,},
    soort: {type : String},
@@ -18,7 +22,7 @@ var antwoordSchema=new Schema({
    bewerkt: { type: String },
    antwoorden:[antwoordSchema],
    actief:{type:Boolean},
-   oplossingen:[String]
+   oplossingen:[oplossingSchema]
  },{ collection: 'vragen' },{_id: true});
 
  var lesSchema=new Schema({
@@ -59,11 +63,13 @@ var Leerkracht = mongoose.model('Leerkracht', leerkrachtSchema);
 var Les = mongoose.model('Les', lesSchema);
 var Vraag = mongoose.model('Vraag', vraagSchema);
 var Antwoord = mongoose.model('Antwoord', antwoordSchema);
+var Oplossing = mongoose.model('Oplossing', oplossingSchema);
 
 // module.exports allows us to pass this to other files when it is called
 module.exports ={
   Leerkracht: Leerkracht,
     Les: Les,
     Vraag: Vraag,
-    Antwoord:Antwoord
+    Antwoord:Antwoord,
+    Oplossing:Oplossing
   } ;

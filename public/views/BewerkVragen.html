@@ -39,10 +39,10 @@ Soort
       </thead>
 
         <tbody>
-          <tr ng-repeat="oplossing in vraag.oplossingen">
-              <td>{{ oplossing }}</td>
+          <tr ng-repeat="opl in vraag.oplossingen">
+              <td>{{ opl.oplossing }}</td>
               <td>
-                 <button ng-click="deleteAntwoord(antwoord._id)" class="btn btn-danger">
+                 <button ng-click="deleteOplossing(opl._id)" class="btn btn-danger">
                     <i class="glyphicon glyphicon-remove"> </i>
                  </button>
                </div>

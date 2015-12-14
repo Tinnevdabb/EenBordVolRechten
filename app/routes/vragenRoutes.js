@@ -132,11 +132,24 @@ app.post('/addVraag', function(req, res, next) {
       if (!req.body.oplossing) {
         return res.json({ error: 'Vul aub een oplossing in' });
     }
-    models.Leerkracht.findById(req.user._id, function(err, leerkracht){
-          leerkracht.lessen.id(req.body.lesID).vragen.id(req.body.vraagID).oplossingen.push(req.body.oplossing);
+
+    var newOplossing = new models.Oplossing();
+    newOplossing.oplossing = req.body.oplossing;
+
+    newOplossing.save(function (err){
+        if (err) {
+          return res.json({ error: 'error saving new oplossing' });
+             console.log('error saving new oplossing');
+             console.log(err);
+         }
+         else {
+               console.log('new oplossing saved successfully');
+
+               models.Leerkracht.findById(req.user._id, function(err, leerkracht){
+                 leerkracht.lessen.id(req.body.lesID).vragen.id(req.body.vraagID).oplossingen.push(newOplossing);
 
 
-          leerkracht.save(function (err){
+                 leerkracht.save(function (err){
                        if (err) {
                          return res.json({ error: 'error adding new oplossing' });
                        console.log('error adding new oplossing');
@@ -147,6 +160,30 @@ app.post('/addVraag', function(req, res, next) {
 
                    });
           });
+        }
+    });
+  });
+
+    //DELETEANTOORD =============================================
+    app.put('/deleteOplossing', function(req, res, next) {
+      console.log('in /deleteOplossing')
+    models.Leerkracht.findById(req.user._id, function(err, leerkracht){
+          var opl = leerkracht.lessen.id(req.body.lesID).vragen.id(req.body.vraagID).oplossingen.id(req.body.oplossingID);
+          console.log(opl);
+
+          leerkracht.save(function (err){
+                       if (err) {
+                         return res.json({ error: 'error deleting oplossing' });
+                       console.log('error deleting oplossing');
+                       console.log(err);
+                       }
+                       var vraag = leerkracht.lessen.id(req.body.lesID).vragen.id(req.body.vraagID);
+                       return  res.json(vraag);
+
+                   });
+          });
 
     });
+
+
   };

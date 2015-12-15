@@ -20,21 +20,30 @@
       </div>
   </nav>
 
-<div>
-Vraag <input type="text" ng-model= "newVraag" >
 
-<button ng-click="editVraag()">Bewaar nieuwe vraag </button>
+  <form class="form-inline">
+  <div class="form-group">
+  <label>Vraag</label>
+  <input type="text" class="form-control" ng-model= "newVraag">
+  <button ng-click="editVraag()" class="btn btn-default btn-sm">Bewaar nieuwe vraag </button>
+  </div>
+  <br></br>
+  <div class="form-group">
+  <label>Soort</label>
+  <select class="form-control" id="VraagSoort">
+      <option value="" disabled selected>Soort (Huidige soort is {{vraag.soort}})</option>
+      <option value="open" >Open</option>
+      <option value="meerkeuze">Meerkeuze</option>
+       <option value="cloud">Cloud</option>
+    </select>
+  <button ng-click="editVraagSoort()" class="btn btn-default btn-sm">Bewaar nieuwe soort </button>
 </div>
+  </form>
 
-<div>
-Soort
-<select class="form-control" id="VraagSoort">
-    <option value="" disabled selected>Soort (Huidige soort is {{vraag.soort}})</option>
-    <option value="open" >Open</option>
-    <option value="meerkeuze">Meerkeuze</option>
-     <option value="cloud">Cloud</option>
-  </select>
-  <button ng-click="editVraagSoort()">Bewaar nieuwe soort </button>
+
+
+
+
 
   <div class="table-responsive" ng-show="multi" class="ng-hide">
       <table class="table table-hover ">
@@ -67,7 +76,7 @@ Soort
   </div>
 
 
-</div>
+
 
 <div growl></div> <!--error message-->
 

@@ -57,9 +57,12 @@
          </tbody>
          <tfoot>
            <tr>
-               <td colspan="2"><input type="text" ng-model="naam" /></td>
+               <td colspan="2" >
+                 <div class="col-xs-4">
+                      <input class="form-control" type="text" ng-model="naam" />
+                  </div></td>
                <td>  </td>
-               <td><button ng-click="addLes()"> Voeg toe</button></td>
+               <td><button ng-click="addLes()" class="btn btn-default btn-sm"> Voeg toe</button></td>
              </tr>
            </tfoot>
 </table>

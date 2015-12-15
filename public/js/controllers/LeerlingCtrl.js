@@ -12,5 +12,5 @@ angular.module('LeerlingCtrl', []).controller('LeerlingController',  ['$http',"$
                 });
         }
 
-document.body.style.background = "#aff59c url('../img/Logo.png') no-repeat right top"
+document.body.style.background = "#F4FA58 url('../img/Logo.png') no-repeat right top"
 }]);

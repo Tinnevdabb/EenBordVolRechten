@@ -19,9 +19,15 @@
       </div>
   </nav>
 
-    Les naam <input type="text" ng-model= "newLes" >
+  <form class="form-inline">
+<div class="form-group">
+  <label>Les naam</label>
+  <input type="text" class="form-control" ng-model= "newLes">
+</div>
+<button ng-click="editLes()" class="btn btn-default btn-sm">Bewaar nieuwe les naam </button>
+</form>
 
-    <button ng-click="editLes()">Bewaar nieuwe les naam </button>
+
     <div growl></div>
 
    <div class="table-responsive">
@@ -57,7 +63,10 @@
          </tbody>
          <tfoot>
            <tr>
-               <td ><input type="text" ng-model="vraag" /></td>
+               <td >
+                 <div class="col-xs-4">
+                    <input class="form-control" type="text" ng-model="vraag" />
+                  </div></td>
                <td colspan="2">
                  <select class="form-control" id="VraagSoort">
                    <option value="" disabled selected>Soort</option>
@@ -67,7 +76,7 @@
                  </select>
                 </td>
 
-               <td><button ng-click="addVraag()"> Voeg toe</button></td>
+               <td><button ng-click="addVraag()" class="btn btn-default btn-sm"> Voeg toe</button></td>
              </tr>
            </tfoot>
 </table>

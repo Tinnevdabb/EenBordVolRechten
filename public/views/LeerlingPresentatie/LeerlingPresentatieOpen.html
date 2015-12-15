@@ -1,8 +1,10 @@
 <section  ng-controller="LeerlingPresentatieOpenController">
   <h1>{{vraag.vraag}}</h1>
   open
+  <div class="form-group">
   <input type="text" ng-model="antwoord" />
   <button ng-click="addAntwoord()"> Voeg toe</button>
+</div>
   <div growl></div>
 
 </section>

@@ -1,9 +1,11 @@
 <section  ng-controller="LeerlingPresentatieMultiController">
 <h1>{{vraag.vraag}}</h1>
 multi
-<div ng-repeat="opl in vraag.oplossingen">
-<input type="radio" ng-model="$parent.antwoord" name="oplossingen" value="{{opl.oplossing}}">{{opl.oplossing}}
+<div class="form-group">
+  <div ng-repeat="opl in vraag.oplossingen" >
+    <input type="radio" ng-model="$parent.antwoord" name="oplossingen" value="{{opl.oplossing}}" >{{opl.oplossing}}
+    </div>
+    <button ng-click="addAntwoord()"> Voeg toe</button>
 </div>
-<button ng-click="addAntwoord()"> Voeg toe</button>
 <div growl></div>
 </section>

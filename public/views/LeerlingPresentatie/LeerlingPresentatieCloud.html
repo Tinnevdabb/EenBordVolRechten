@@ -1,7 +1,9 @@
 <section  ng-controller="LeerlingPresentatieCloudController">
   <h1>{{vraag.vraag}}</h1>
   cloud
+  <div class="form-group">
   <input type="text" ng-model="antwoord" />
   <button ng-click="addAntwoord()"> Voeg toe</button>
+</div>
   <div growl></div>
 </section>

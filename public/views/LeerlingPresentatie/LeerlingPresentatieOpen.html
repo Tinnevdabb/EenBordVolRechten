@@ -1,10 +1,17 @@
 <section  ng-controller="LeerlingPresentatieOpenController">
   <h1>{{vraag.vraag}}</h1>
-  open
-  <div class="form-group">
-  <input type="text" ng-model="antwoord" />
+<div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6 login-form-bg">
+  <form class="form-inline">
+<div class="form-group"  >
+  <label>open</label>
+  <input type="text" class="form-control" ng-model="antwoord">
   <button ng-click="addAntwoord()"> Voeg toe</button>
 </div>
+</form>
+</div>
+
+
+
   <div growl></div>
 
 </section>

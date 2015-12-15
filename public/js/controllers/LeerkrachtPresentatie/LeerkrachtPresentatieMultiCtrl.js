@@ -13,8 +13,8 @@ var amount=0;
             $scope.results = [];
             angular.forEach($scope.oplossingen, function(oplossing, key) {
                   angular.forEach($scope.antwoorden, function(value, key) {
-                    console.log(oplossing+":"+value.antwoord);
-                        if(oplossing==value.antwoord){
+                    console.log(oplossing.oplossing+":"+value.antwoord);
+                        if(oplossing.oplossing==value.antwoord){
                           console.log("+1");
                            amount = amount+1;
                           console.log(amount);
@@ -22,7 +22,7 @@ var amount=0;
                     });
 
                     $scope.results.push({
-                      opl: oplossing,
+                      opl: oplossing.oplossing,
                       aantal:amount
                   });
                   console.log($scope.results);

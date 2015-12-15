@@ -1,11 +1,14 @@
 <section  ng-controller="LeerkrachtPresentatieMultiController">
+   <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6 login-form-bg">
   <h1>{{vraag.vraag}}</h1>
 Multi
+
 <div class="form-group">
 <div ng-repeat="result in results">
   {{result.opl}}
 {{result.aantal}}
 </div>
 <button ng-click="getAnswers()">Get Anwsers</button>
+</div>
 </div>
 </section>

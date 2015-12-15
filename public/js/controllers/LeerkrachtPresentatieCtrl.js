@@ -72,8 +72,6 @@ angular.module('LeerkrachtPresentatieCtrl', []) .config(['slickCarouselConfig', 
                    les_id:   $scope.lesID,
                    currentVraag_id:$scope.vragen[currentSlide]._id,
                    previousVraag_id:$scope.vragen[currentSlide-1]._id
-               })
-               .success(function(data) {
                });*/
         }
       }

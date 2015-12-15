@@ -2,12 +2,13 @@
     <button ng-click="stopLes(les._id)" class="btn btn-danger">Stop Les</button>
     <h1>{{les.naam}}</h1>
     <div class="slider">
-      <div class="login-form-bg">
+
      <slick settings="slickConfig" ng-if="vragen.length" data="vragen" >
+
         <div ng-repeat="vraag in vragen"  >
              <div ng-include src="template.url"></div>
          </div>
    </slick>
- </div>
+
  </div>
 </section>

@@ -28,6 +28,6 @@ angular.module('LeerkrachtPresentatieCloudCtrl', []).controller('LeerkrachtPrese
           };
 
 
-      document.body.style.background = "#CEF6F5"
+      document.body.style.background = "#D8D8D8"
 
 }]);

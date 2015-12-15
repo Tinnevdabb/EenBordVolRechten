@@ -92,5 +92,5 @@ angular.module('BewerkVragenCtrl', []).controller('BewerkVragenController', ['$h
 
 
 
-document.body.style.background = "#CEF6F5 url('../img/Achtergrond.png') no-repeat right top"
+document.body.style.background = "#D8D8D8 url('../img/Achtergrond.png') no-repeat right top"
 }]);

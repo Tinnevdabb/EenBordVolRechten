@@ -38,9 +38,10 @@ body{
   width: auto;
   padding: 0 15px;
 }
-.container .text-muted {
+.container .text-footer {
   margin: 20px 0;
    text-align: center;
+   color: black;
 }
 
 .login-form-bg{

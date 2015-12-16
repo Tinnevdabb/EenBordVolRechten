@@ -10,7 +10,7 @@
           <div ng-repeat="opl in vraag.oplossingen" >
             <input class="form-control" type="radio" ng-model="$parent.antwoord" name="oplossingen" value="{{opl.oplossing}}" >{{opl.oplossing}}
           </div>
-          <button ng-click="addAntwoord()"> Voeg toe</button>
+          <button ng-click="addAntwoord()" class="btn btn-default btn-sm"> Voeg toe</button>
 
         </div>
 

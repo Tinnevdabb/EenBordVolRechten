@@ -78,6 +78,7 @@ var models = require('../models/leerkracht');
           app.get('/BeheerVragen/:lesID',isLoggedIn);
           app.get('/LeerkrachtPresentatie/:lesID',isLoggedIn);
           app.get('/BewerkVragen/:lesID/:vraagID',isLoggedIn);
+          app.get('/LeerlingPresentatie/:lesID',isLoggedInLeerling);
 
           app.get('/LeerlingPresentatie');
 
@@ -117,4 +118,15 @@ function isLoggedIn(req, res, next) {
 
     // if they aren't redirect them to the home page
     res.redirect('/');
+}
+
+// route middleware to make sure a user is logged in
+function isLoggedInLeerling(req, res, next) {
+
+// if user is authenticated in the session, carry on
+if (req.session.voornaam)
+    return next();
+
+// if they aren't redirect them to the home page
+res.redirect('/');
 }

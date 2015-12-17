@@ -1,6 +1,7 @@
 <section  ng-controller="LeerkrachtPresentatieController">
     <button ng-click="stopLes(les._id)" class="btn btn-danger">Stop Les</button>
-    <h1>{{les.naam}} </br> Token: {{les.token}}</h1>
+    <h1>{{les.naam}} </h1>
+    <div><b>Token</b>: {{les.token}}</div>
     <div class="slider">
 
      <slick settings="slickConfig" ng-if="vragen.length" data="vragen" >

@@ -8,7 +8,14 @@ appLessen.controller('LessenController', ['$http', '$scope', '$routeParams','$lo
                 });
 
 
-
+                $scope.customButton={
+                  main: {
+                  label: "OK",
+                  className: "btn-primary",
+                  callback: function()
+                  { }
+                }
+              };
 
               $scope.addLes = function() {
                         $http.post('/addLes', {

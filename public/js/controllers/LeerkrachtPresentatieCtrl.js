@@ -12,12 +12,16 @@ angular.module('LeerkrachtPresentatieCtrl', []) .config(['slickCarouselConfig', 
 
 
 
+
   $scope.lesID = $routeParams.lesID;
   $http.get('/api/LessenData/' + $scope.lesID)
       .success(function(data) {
           $scope.les = data; //Expose the user data to your angular scope
           $scope.vragen=data.vragen;
-            alert(data.token);
+
+            
+
+            //alert(data.token);
           if($scope.vragen[0].soort=="open"){
             console.log("open");
                $scope.template = $scope.templates[0];

@@ -22,6 +22,8 @@ var oplossingSchema=new Schema({
    bewerkt: { type: String },
    antwoorden:[antwoordSchema],
    actief:{type:Boolean},
+   video:{type:String},
+   afbeelding:{type:String},
    oplossingen:[oplossingSchema]
  },{ collection: 'vragen' },{_id: true});
 

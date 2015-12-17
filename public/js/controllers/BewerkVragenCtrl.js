@@ -83,6 +83,21 @@ angular.module('BewerkVragenCtrl', []).controller('BewerkVragenController', ['$h
                   }
                 };
 
+                $scope.addMedia=function() {
+                    var e = document.getElementById("MediaSoort");
+                  var soortValue = e.options[e.selectedIndex].value;
+                          $http.post('/addMedia', {
+                                  lesID:$scope.lesID,
+                                  vraagID:$scope.vraagID,
+                                  media:this.newMedia,
+                                  soort: soortValue
+                              })
+                              .success(function(data) {
+                                $scope.newMedia =null; // clear the form so our user is ready to enter another
+                                $scope.les = data;
+                              });
+                      };
+
 
 
 

@@ -29,6 +29,18 @@
   </div>
   <br></br>
   <div class="form-group">
+  <label>Video of image</label>
+  <p class="help-block">Plak hier afbeelding of video link</p>
+  <input type="text" class="form-control" ng-model= "newMedia">
+  <select class="form-control" id="MediaSoort">
+      <option value="" disabled selected>Soort</option>
+      <option value="video" >video</option>
+      <option value="afbeelding">afbeelding</option>
+    </select>
+  <button ng-click="addMedia()" class="btn btn-default btn-sm">Bewaar media</button>
+  </div>
+  <br></br>
+  <div class="form-group">
   <label>Soort</label>
   <select class="form-control" id="VraagSoort">
       <option value="" disabled selected>Soort (Huidige soort is {{vraag.soort}})</option>

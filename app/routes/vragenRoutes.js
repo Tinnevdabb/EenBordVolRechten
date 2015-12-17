@@ -185,5 +185,34 @@ app.post('/addVraag', function(req, res, next) {
 
     });
 
+    //ADD MEDIA =============================================
+    app.post('/addMedia', function(req, res, next) {
+
+      if (!req.body.media) {
+        return res.json({ error: 'Vul aub een link in' });
+    }
+    models.Leerkracht.findById(req.user._id, function(err, leerkracht){
+          var vraag=leerkracht.lessen.id(req.body.lesID).vragen.id(req.body.vraagID);
+          if(req.body.soort=="video"){
+            vraag.video=req.body.media;
+            vraag.afbeelding=null;
+          }
+          if(req.body.soort=="afbeelding"){
+            vraag.afbeelding=req.body.media;
+            vraag.video=null;
+          }
+          console.log(req.body.soort);
+          leerkracht.save(function (err){
+                       if (err) {
+                         return res.json({ error: 'error adding new media to list' });
+                       console.log('error adding new media to list');
+                       console.log(err);
+                       }
+                       return  res.json({ success: 'vraag geupdate' });
+
+                   });
+          });
+
+    });
 
   };

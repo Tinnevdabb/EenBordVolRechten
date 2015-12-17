@@ -3,7 +3,7 @@ angular.module('LeerkrachtPresentatieCtrl', []) .config(['slickCarouselConfig', 
     slickCarouselConfig.autoplay = false;
   }])
 
-.controller('LeerkrachtPresentatieController', ['$http', '$scope', '$routeParams','$location', function($http, $scope, $routeParams,$location)  {
+.controller('LeerkrachtPresentatieController', ['$http', '$scope', '$routeParams','$location', '$sce', function($http, $scope, $routeParams,$location, $sce)  {
 
   document.body.style.background = "#D8D8D8";
 
@@ -36,6 +36,11 @@ angular.module('LeerkrachtPresentatieCtrl', []) .config(['slickCarouselConfig', 
                });
 
       });
+
+      //to make video trustworthy for angular
+      $scope.trustSrc = function(src) {
+         return $sce.trustAsResourceUrl(src);
+       }
 
       $scope.slickConfig = {
         method: {},

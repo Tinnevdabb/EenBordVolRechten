@@ -1,6 +1,18 @@
 <section  ng-controller="LeerkrachtPresentatieOpenController">
      <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6 login-form-bg">
          <h1>{{vraag.vraag}}</h1>
+         <div ng-show="video" >
+           <!--<div align="center" class="embed-responsive embed-responsive-16by9">
+              <video autoplay loop class="embed-responsive-item">
+                  <source src="{{trustSrc(vraag.video)}}" type=video/mp4>
+              </video>
+          </div>-->
+         <iframe width="auto" height="auto" src="{{trustSrc(vraag.video)}}" frameborder="0" allowfullscreen=""></iframe>
+       </div>
+
+       <div ng-show="afbeelding" >
+      <img ng-src="{{vraag.afbeelding}}" class="img-responsive">
+     </div>
 
           <div class="form-group">
               <div ng-repeat="antwoord in antwoorden">

@@ -86,10 +86,18 @@ angular.module('BewerkVragenCtrl', []).controller('BewerkVragenController', ['$h
                 $scope.addMedia=function() {
                     var e = document.getElementById("MediaSoort");
                   var soortValue = e.options[e.selectedIndex].value;
+                  if(soortValue=="video")
+                  {
+                    var url= this.newMedia;
+                     url = url.replace("watch?v=", "v/");
+                  }else{
+                    var url= this.newMedia;
+                  }
+
                           $http.post('/addMedia', {
                                   lesID:$scope.lesID,
                                   vraagID:$scope.vraagID,
-                                  media:this.newMedia,
+                                  media:url,
                                   soort: soortValue
                               })
                               .success(function(data) {

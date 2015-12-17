@@ -27,6 +27,19 @@ angular.module('LeerkrachtPresentatieCloudCtrl', []).controller('LeerkrachtPrese
             });
           };
 
+          //check of er video of image is
+          if($scope.vraag.video==null)
+          {
+            $scope.video=true;
+            $scope.afbeelding=false;
+          }else if($scope.vraag.afbeelding==null){
+            $scope.video=false;
+            $scope.afbeelding=true;
+          }else{
+            $scope.video=false;
+            $scope.afbeelding=false;
+          }
+
 
       document.body.style.background = "#D8D8D8"
 

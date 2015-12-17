@@ -33,5 +33,19 @@ var amount=0;
         });
       };
 
+      //check of er video of image is
+      if($scope.vragen.video==null)
+      {
+        $scope.video=true;
+        $scope.afbeelding=false;
+      }else if($scope.vragen.afbeelding==null){
+        $scope.video=false;
+        $scope.afbeelding=true;
+      }else{
+        $scope.video=false;
+        $scope.afbeelding=false;
+      }
+
+
 
 }]);

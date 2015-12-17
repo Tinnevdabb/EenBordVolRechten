@@ -9,6 +9,18 @@ angular.module('LeerkrachtPresentatieOpenCtrl', []).controller('LeerkrachtPresen
         });
       };
 
+      //check of er video of image is
+      if($scope.vraag.video!=null)
+      {
+        $scope.video=true;
+        $scope.afbeelding=false;
+      }else if($scope.vraag.afbeelding!=null){
+        $scope.video=false;
+        $scope.afbeelding=true;
+      }else{
+        $scope.video=false;
+        $scope.afbeelding=false;
+      }
 
 
 }]);

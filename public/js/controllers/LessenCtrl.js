@@ -1,8 +1,7 @@
 var appLessen = angular.module('LessenCtrl', []);
 
 appLessen.controller('LessenController', ['$http', '$scope', '$routeParams','$location', function($http, $scope, $routeParams,$location) {
-  $scope.lesID = $routeParams.lesID;
-  console.log($scope.lesID);
+
 
             $http.get('/api/leerkrachtData')
                 .success(function(data) {
@@ -36,8 +35,8 @@ appLessen.controller('LessenController', ['$http', '$scope', '$routeParams','$lo
                     label: "Delete",
                     className: "btn-danger",
                     callback: function() {
-                      $http.delete('/deleteLes/' + id, {
-                        lesID:$scope.lesID
+                      var id_value = document.getElementById("deleteButton").value;
+                      $http.delete('/deleteLes/' + id_value, {
                       })
                           .success(function(data) {
                               $scope.leerkracht = data;

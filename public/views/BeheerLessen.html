@@ -38,7 +38,7 @@
                <td>{{ les.bewerkt }}</td>
                <td>
                    <div class="btn-group btn-group-sm" role="group">
-                     <button ng-click="startLes(les._id)" class="btn btn-success" ng-bootbox-title="{{les.naam}}" ng-bootbox-custom-dialog="{{les.token}}" ng-bootbox-buttons="customButton">
+                     <button ng-click="startLes(les._id)" class="btn btn-success" ng-bootbox-title="{{les.naam}}" ng-bootbox-custom-dialog="{{les.token}}" ng-bootbox-buttons="customButtonPlay">
                    <i class="glyphicon glyphicon-play"> </i>
                  </button>
                   <button ng-click="bewerkLes(les._id)" class="btn btn-warning">
@@ -47,7 +47,7 @@
                    <button ng-click="downloadLes(les._id,les.naam)" class="btn btn-info">
                      <i class="glyphicon glyphicon-download-alt"> </i>
                   </button>
-                  <button ng-click="deleteLes(les._id)" class="btn btn-danger">
+                  <button ng-click="deleteLes(les._id)" class="btn btn-danger" ng-bootbox-title="{{les.naam}}" ng-bootbox-custom-dialog="Ben je zeker dat je deze les wil verwijderen?" ng-bootbox-buttons="customButtonDelete">
                      <i class="glyphicon glyphicon-remove"> </i>
                   </button>
                 </div>

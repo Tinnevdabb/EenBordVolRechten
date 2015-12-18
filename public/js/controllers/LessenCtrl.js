@@ -1,6 +1,8 @@
 var appLessen = angular.module('LessenCtrl', []);
 
 appLessen.controller('LessenController', ['$http', '$scope', '$routeParams','$location', function($http, $scope, $routeParams,$location) {
+  $scope.lesID = $routeParams.lesID;
+  console.log($scope.lesID);
 
             $http.get('/api/leerkrachtData')
                 .success(function(data) {
@@ -8,7 +10,7 @@ appLessen.controller('LessenController', ['$http', '$scope', '$routeParams','$lo
                 });
 
 
-                $scope.customButton={
+              $scope.customButtonPlay={
                   main: {
                   label: "OK",
                   className: "btn-primary",
@@ -17,7 +19,7 @@ appLessen.controller('LessenController', ['$http', '$scope', '$routeParams','$lo
                 }
               };
 
-              $scope.addLes = function() {
+          $scope.addLes = function() {
                         $http.post('/addLes', {
                                 naam: this.naam
                             })
@@ -28,20 +30,31 @@ appLessen.controller('LessenController', ['$http', '$scope', '$routeParams','$lo
                     };
 
 
-              $scope.deleteLes = function(id) {
-            var answer= confirm("Are you sure you want to delete a lesson?");
-            if (answer){
-              $http.delete('/deleteLes/' + id)
-                  .success(function(data) {
-                      $scope.leerkracht = data;
-                  })
-                  .error(function(data) {
-                      console.log('Error: ' + data);
-                  });}
-                  else {
-                    alert("you chose not to delete the lesson");
+            //DELETELES
+                  $scope.customButtonDelete={
+                    danger: {
+                    label: "Delete",
+                    className: "btn-danger",
+                    callback: function() {
+                      $http.delete('/deleteLes/' + id, {
+                        lesID:$scope.lesID
+                      })
+                          .success(function(data) {
+                              $scope.leerkracht = data;
+                          })
+                          .error(function(data) {
+                              console.log('Error: ' + data);
+                          });
+                     }
+                    },
+                    main: {
+                    label: "Cancel",
+                    className: "btn-default",
+                    callback: function() {}
                   }
                 };
+
+
 
              $scope.bewerkLes=function(id){
                 $location.path( '/BeheerVragen/'+ id );

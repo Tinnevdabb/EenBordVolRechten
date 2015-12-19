@@ -29,14 +29,17 @@ appLessen.controller('LessenController', ['$http', '$scope', '$routeParams','$lo
                     };
 
 
+                    $scope.giveID=function(id){
+                      $scope.lesID=id;
+                    }
+
             //DELETELES
                   $scope.customButtonDelete={
                     danger: {
                     label: "Delete",
                     className: "btn-danger",
                     callback: function() {
-                      var id_value = document.getElementById("deleteButton").value;
-                      $http.delete('/deleteLes/' + id_value, {
+                      $http.delete('/deleteLes/' + $scope.lesID, {
                       })
                           .success(function(data) {
                               $scope.leerkracht = data;

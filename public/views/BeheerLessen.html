@@ -47,7 +47,7 @@
                    <button ng-click="downloadLes(les._id,les.naam)" class="btn btn-info">
                      <i class="glyphicon glyphicon-download-alt"> </i>
                   </button>
-                  <button class="btn btn-danger" id="deleteButton" ng-bootbox-title="{{les.naam}}" value="{{les._id}}" ng-bootbox-custom-dialog="Ben je zeker dat je deze les wil verwijderen?" ng-bootbox-buttons="customButtonDelete">
+                  <button class="btn btn-danger" ng-click="giveID(les._id)" ng-bootbox-title="{{les.naam}}" ng-bootbox-custom-dialog="Ben je zeker dat je deze les wil verwijderen?" ng-bootbox-buttons="customButtonDelete">
                      <i class="glyphicon glyphicon-remove"> </i>
                   </button>
                 </div>

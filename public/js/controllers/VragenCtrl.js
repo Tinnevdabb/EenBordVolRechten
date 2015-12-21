@@ -1,6 +1,8 @@
 angular.module('VragenCtrl', []).controller('VragenController', ['$http', '$scope', '$routeParams', '$location', function($http, $scope,$routeParams, $location) {
         $scope.lesID = $routeParams.lesID;
         console.log($scope.lesID);
+      $scope.vraagID = $routeParams.vraagID;
+        console.log($scope.vraagID);
 
         $http.get('/api/LessenData/' + $scope.lesID)
             .success(function(data) {
@@ -22,24 +24,32 @@ angular.module('VragenCtrl', []).controller('VragenController', ['$http', '$scop
                       });
               };
 
-              //using put not delete because delete doesnt allow req.body parameters
-              $scope.deleteVraag = function(id) {
-                var answer= confirm("Are you sure you want to delete that question?");
-                if (answer){
-              $http.put('/deleteVraag/' + id, {
-                      lesID: $scope.lesID,
-                  })
-                  .success(function(data) {
-                      $scope.les = data;
-                  })
-                  .error(function(data) {
-                      console.log('Error: ' + data);
-                  });}
-                  else {
-                    alert("you chose not to delete the question");
-                  }
-                };
-
+              
+                $scope.giveID=function(id){
+                  $scope.vraagID=id;
+                }
+                //DELETELES
+                      $scope.customButtonDelete={
+                        danger: {
+                        label: "Delete",
+                        className: "btn-danger",
+                        callback: function() {
+                          $http.delete('/deleteVraag/' + $scope.lesID +'/' +  $scope.vraagID, {
+                          })
+                              .success(function(data) {
+                                  $scope.leerkracht = data;
+                              })
+                              .error(function(data) {
+                                  console.log('Error: ' + data);
+                              });
+                         }
+                        },
+                        main: {
+                        label: "Cancel",
+                        className: "btn-default",
+                        callback: function() {}
+                      }
+                    };
 
                 $scope.bewerkVraag=function(vraagID){
                    $location.path( '/BewerkVragen/'+ $scope.lesID +'/'+vraagID);

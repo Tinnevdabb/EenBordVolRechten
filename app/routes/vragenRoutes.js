@@ -59,11 +59,11 @@ app.post('/addVraag', function(req, res, next) {
     //DELETE VRAAG=======================================================================
 
       //using put not delete because delete doesnt allow req.body parameters
-    app.put('/deleteVraag/:vraag_id', function(req, res,next) {
+    app.delete('/deleteVraag/:les_id/:vraag_id', function(req, res,next) {
 
       models.Leerkracht.findById(req.user._id, function(err, leerkracht){
-          console.log(req.body.lesID);
-            leerkracht.lessen.id(req.body.lesID).vragen.id(req.params.vraag_id).remove();
+          console.log(req.params.les_id);
+            leerkracht.lessen.id(req.params.les_id).vragen.id(req.params.vraag_id).remove();
 
           leerkracht.save(function (err){
               if (err) {
@@ -71,7 +71,7 @@ app.post('/addVraag', function(req, res, next) {
               console.log('error deleting les from list');
               console.log(err);
               }
-                var les=leerkracht.lessen.id(req.body.lesID);
+                var les=leerkracht.lessen.id(req.params.les_id);
                 return  res.json(les);
           });
       });

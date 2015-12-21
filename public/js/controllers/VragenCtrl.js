@@ -24,7 +24,7 @@ angular.module('VragenCtrl', []).controller('VragenController', ['$http', '$scop
                       });
               };
 
-              
+
                 $scope.giveID=function(id){
                   $scope.vraagID=id;
                 }
@@ -37,7 +37,7 @@ angular.module('VragenCtrl', []).controller('VragenController', ['$http', '$scop
                           $http.delete('/deleteVraag/' + $scope.lesID +'/' +  $scope.vraagID, {
                           })
                               .success(function(data) {
-                                  $scope.leerkracht = data;
+                                  $scope.les = data;
                               })
                               .error(function(data) {
                                   console.log('Error: ' + data);

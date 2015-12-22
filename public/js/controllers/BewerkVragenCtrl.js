@@ -76,11 +76,11 @@ angular.module('BewerkVragenCtrl', []).controller('BewerkVragenController', ['$h
                           $http.put('/deleteOplossing/', {
                             lesID:$scope.lesID,
                             vraagID:$scope.vraagID,
-                            oplossingID:oplID
+                            oplossingID:$scope.oplID
 
                           })
                               .success(function(data) {
-                                  $scope.Oplossing = data;
+                                  $scope.vraag = data;
                               })
                               .error(function(data) {
                                   console.log('Error: ' + data);

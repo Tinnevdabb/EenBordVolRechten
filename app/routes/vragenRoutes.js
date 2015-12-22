@@ -164,7 +164,7 @@ app.post('/addVraag', function(req, res, next) {
     });
   });
 
-    //DELETEANTOORD =============================================
+    //DELETEOPLOSSING =============================================
     app.put('/deleteOplossing', function(req, res, next) {
       console.log('in /deleteOplossing')
     models.Leerkracht.findById(req.user._id, function(err, leerkracht){

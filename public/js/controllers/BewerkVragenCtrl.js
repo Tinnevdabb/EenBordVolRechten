@@ -4,6 +4,9 @@ angular.module('BewerkVragenCtrl', []).controller('BewerkVragenController', ['$h
   $scope.vraagID = $routeParams.vraagID;
   console.log($scope.vraagID);
   $scope.mutli=false;
+  $scope.oplID = $routeParams.oplID;
+  console.log($scope.oplID);
+
 
 
   $http.get('/api/LessenData/' + $scope.lesID +'/' + $scope.vraagID )
@@ -63,7 +66,7 @@ angular.module('BewerkVragenCtrl', []).controller('BewerkVragenController', ['$h
 
 
 
-            $scope.deleteOplossing = function(oplID) {
+            /*$scope.deleteOplossing = function(oplID) {
             var answer= confirm("Are you sure you want to delete an answer?");
             if (answer){
                 $http.put('/deleteOplossing/', {
@@ -81,7 +84,32 @@ angular.module('BewerkVragenCtrl', []).controller('BewerkVragenController', ['$h
                   else {
                     alert("you chose not to delete the answer");
                   }
-                };
+                };*/
+
+                //DELETEOPLOSSING
+                      $scope.customButtonDelete={
+                        danger: {
+                        label: "Delete",
+                        className: "btn-danger",
+                        callback: function() {
+                          $http.delete('/deleteOplossing/' + $scope.lesID +'/' +  $scope.vraagID +'/' +  $scope.oplID , {
+
+                          })
+                              .success(function(data) {
+                                  $scope.Oplossing = data;
+                              })
+                              .error(function(data) {
+                                  console.log('Error: ' + data);
+                              });
+                         }
+                        },
+                        main: {
+                        label: "Cancel",
+                        className: "btn-default",
+                        callback: function() {}
+                      }
+                    };
+
 
                 $scope.addMedia=function() {
                     var e = document.getElementById("MediaSoort");

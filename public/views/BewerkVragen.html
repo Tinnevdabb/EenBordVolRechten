@@ -70,7 +70,7 @@
           <tr ng-repeat="opl in vraag.oplossingen">
               <td>{{ opl.oplossing }}</td>
               <td>
-                 <button ng-click="deleteOplossing(opl._id)" class="btn btn-danger">
+                 <button ng-click="giveID(opl._id)" class="btn btn-danger" ng-bootbox-title="{{opl.oplossing}}" ng-bootbox-custom-dialog="Ben je zeker dat je deze oplossing wil verwijderen?" ng-bootbox-buttons="customButtonDelete">
                     <i class="glyphicon glyphicon-remove"> </i>
                  </button>
                </div>

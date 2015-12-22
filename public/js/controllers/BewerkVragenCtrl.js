@@ -4,8 +4,6 @@ angular.module('BewerkVragenCtrl', []).controller('BewerkVragenController', ['$h
   $scope.vraagID = $routeParams.vraagID;
   console.log($scope.vraagID);
   $scope.mutli=false;
-  $scope.oplID = $routeParams.oplID;
-  console.log($scope.oplID);
 
 
 
@@ -65,26 +63,9 @@ angular.module('BewerkVragenCtrl', []).controller('BewerkVragenController', ['$h
                   };
 
 
-
-            /*$scope.deleteOplossing = function(oplID) {
-            var answer= confirm("Are you sure you want to delete an answer?");
-            if (answer){
-                $http.put('/deleteOplossing/', {
-                lesID:$scope.lesID,
-                vraagID:$scope.vraagID,
-                oplossingID:oplID
-
-              })
-                  .success(function(data) {
-                      $scope.vraag = data;
-                  })
-                  .error(function(data) {
-                      console.log('Error: ' + data);
-                  });}
-                  else {
-                    alert("you chose not to delete the answer");
+                  $scope.giveID=function(id){
+                    $scope.oplID=id;
                   }
-                };*/
 
                 //DELETEOPLOSSING
                       $scope.customButtonDelete={
@@ -92,7 +73,10 @@ angular.module('BewerkVragenCtrl', []).controller('BewerkVragenController', ['$h
                         label: "Delete",
                         className: "btn-danger",
                         callback: function() {
-                          $http.delete('/deleteOplossing/' + $scope.lesID +'/' +  $scope.vraagID +'/' +  $scope.oplID , {
+                          $http.put('/deleteOplossing/', {
+                            lesID:$scope.lesID,
+                            vraagID:$scope.vraagID,
+                            oplossingID:oplID
 
                           })
                               .success(function(data) {

@@ -101,7 +101,7 @@ angular.module('BewerkVragenCtrl', []).controller('BewerkVragenController', ['$h
                   if(soortValue=="video")
                   {
                     var url= this.newMedia;
-                     url = url.replace("watch?v=", "v/");
+                     url = url.replace("watch?v=", "embed/");
                   }else{
                     var url= this.newMedia;
                   }

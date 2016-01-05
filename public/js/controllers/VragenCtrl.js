@@ -4,6 +4,13 @@ angular.module('VragenCtrl', []).controller('VragenController', ['$http', '$scop
       $scope.vraagID = $routeParams.vraagID;
         console.log($scope.vraagID);
 
+        $http.get('/api/LeerkrachtNaam/')
+            .success(function(data) {
+                $scope.leerkrachtNaam = data; //Expose the user data to your angular scope
+
+              });
+
+
         $http.get('/api/LessenData/' + $scope.lesID)
             .success(function(data) {
                 $scope.les = data; //Expose the user data to your angular scope

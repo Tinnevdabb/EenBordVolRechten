@@ -5,6 +5,11 @@ angular.module('BewerkVragenCtrl', []).controller('BewerkVragenController', ['$h
   console.log($scope.vraagID);
   $scope.mutli=false;
 
+  $http.get('/api/LeerkrachtNaam/')
+      .success(function(data) {
+          $scope.leerkrachtNaam = data; //Expose the user data to your angular scope
+
+        });
 
 
   $http.get('/api/LessenData/' + $scope.lesID +'/' + $scope.vraagID )

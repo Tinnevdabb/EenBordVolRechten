@@ -12,7 +12,6 @@ var models = require('../models/leerkracht');
           models.Leerkracht.findById(req.user._id, function(err, leerkracht){
                 var les=leerkracht.lessen.id(req.params.les_id);
 
-                console.log(req.user);
               return res.json(les);
 
 
@@ -24,7 +23,6 @@ var models = require('../models/leerkracht');
                     models.Leerkracht.findById(req.session.leerkrachtID, function(err, leerkracht){
                           var les=leerkracht.lessen.id(req.params.les_id);
 
-                          console.log(req.user);
                         return res.json(les);
 
 
@@ -38,6 +36,16 @@ var models = require('../models/leerkracht');
                   return res.json(req.session);
 
               });
+
+
+              //GET LEERKRACHT NAAM=====================================================
+
+              app.get('/api/leerkrachtNaam', function(req, res) {
+
+                  console.log(req.user.firstname);
+                      return res.json(req.user.firstname);
+
+                  });
 
 
 

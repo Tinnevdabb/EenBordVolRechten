@@ -106,7 +106,7 @@ angular.module('BewerkVragenCtrl', []).controller('BewerkVragenController', ['$h
                   if(soortValue=="video")
                   {
                     var url= this.newMedia;
-                     url = url.replace("watch?v=", "embed/");
+                     url = url.replace("watch?v=", "embed/");//embed to let video show on mobile and desktop ('v/' works, but only for desktop)
                   }else{
                     var url= this.newMedia;
                   }

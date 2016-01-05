@@ -98,6 +98,31 @@ appLessen.controller('LessenController', ['$http', '$scope', '$routeParams','$lo
                    });
 
              }
+
+
+           $scope.customDialogButtons = {
+               warning: {
+                   label: "Warning!",
+                   className: "btn-warning",
+                   callback: function() { $scope.addAction('Warning', false); }
+               },
+               success: {
+                   label: "Success!",
+                   className: "btn-success",
+                   callback: function() { $scope.addAction('Success!', true) }
+               },
+               danger: {
+                   label: "Danger!",
+                   className: "btn-danger",
+                   callback: function() { $scope.addAction('Danger!', false) }
+               },
+               main: {
+                   label: "Click ME!",
+                   className: "btn-primary",
+                   callback: function() { $scope.addAction('Main...!', true) }
+               }
+           };
+
 document.body.style.background = "#D8D8D8 url('../img/Achtergrond.png') no-repeat right top"
 
 }]);

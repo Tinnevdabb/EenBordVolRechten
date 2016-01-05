@@ -15,7 +15,8 @@
            <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span>{{ leerkracht.firstname}}<span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="#">wachtwoord wijzigen</a></li>
+                <li><button class="buttonPassword"  ng-bootbox-title="Wijzig je Wachtwoord"  ng-bootbox-custom-dialog  ng-bootbox-custom-dialog-template="views/DialogPassword.html">
+                    wachtwoord wijzigen</button></li>
               </ul>
             </li>
                   <li><a logout href="/logout"><span class="glyphicon glyphicon-log-out"></span> Log uit</a></li>

@@ -53,6 +53,10 @@ body{
 
 }
 
+.buttonPassword{
+  background: transparent;
+  border: none !important;
+}
 .slider{
   width:80%;
   text-align: center

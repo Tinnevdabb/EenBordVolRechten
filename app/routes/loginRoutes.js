@@ -96,4 +96,27 @@ var models = require('../models/leerkracht');
       });
 
 
+      //CHANGE PASSWORD==================================================
+      app.post('/changePassword', function(req, res, next) {
+        if (!req.body.newPassword1 || !req.body.newPassword2) {
+            return res.json({ error: 'Vul aub alle velden in' });
+        }
+        if (req.body.newPassword1 != req.body.newPassword2) {
+            return res.json({ error: 'wachtwoorden waren niet identiek' });
+        }
+        models.Leerkracht.findById(req.user._id,function(err,leerkracht)
+        {
+          console.log(leerkracht);
+          leerkracht.password=leerkracht.generateHash(req.body.newPassword1);
+          leerkracht.save(function (err){
+                       if (err) {
+                         return res.json({ error: 'error changing new password' });
+
+                       }
+                       return  res.json({ success: 'password updated' });
+
+                   });
+             });
+      });
+
     };

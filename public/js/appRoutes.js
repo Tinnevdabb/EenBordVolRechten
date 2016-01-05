@@ -23,6 +23,10 @@
             templateUrl: 'views/Forgot.html',
             controller: 'ForgotController'
         })
+        .when('/Reset/:token', {
+            templateUrl: 'views/Reset.html',
+            controller: 'ResetController'
+        })
 
         .when('/InlogLeerling', {
             templateUrl: 'views/InlogLeerling.html',

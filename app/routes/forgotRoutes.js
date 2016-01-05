@@ -3,6 +3,7 @@ var models = require('../models/leerkracht');
 
     module.exports = function(app, passport, nodemailer,crypto,async) {
 
+ //SEND FORGOT PASSWORD EMAIL===============================================
 app.post('/Forgot', function(req, res, next) {
   console.log('init');
   async.waterfall([
@@ -37,14 +38,13 @@ app.post('/Forgot', function(req, res, next) {
       var mailOptions = {
         to: leerkracht.email,
         from: 'eenbordvolrechten@hotmail.com',
-        subject: 'Node.js Password Reset',
-        text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
-          'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
-          'http://' + req.headers.host + '/reset/' + token + '\n\n' +
-          'If you did not request this, please ignore this email and your password will remain unchanged.\n'
+        subject: 'EenBordVolRechten Paswoord Reset',
+        text: 'Je ontvangt deze email omdat jij (of iemand anders) een paswoord reset voor je account hebt aangevraagd.\n\n' +
+          'Klik op de volgende link, of plak de link in je browser om het process te voltooien:\n\n' +
+          'http://' + req.headers.host + '/Reset/' + token + '\n\n' +
+          'Indien je dit niet hebt aangevraagd kan u deze mail negeren en zullen u email en paswoord onveranderd blijven.\n'
       };
       smtpTransport.sendMail(mailOptions, function(err) {
-        done(err, 'done');
         return res.json({ success: 'Er is een email verstuurd naar '+leerkracht.email+' met verdere instructies.' });
       });
     }
@@ -53,5 +53,61 @@ app.post('/Forgot', function(req, res, next) {
     return res.json({ redirect: '/Forgot' });
   });
 });
+
+
+//RESET PASSWORD===============================================
+
+app.post('/reset/:token', function(req, res) {
+  async.waterfall([
+        function(done) {
+          models.Leerkracht.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, leerkracht) {
+            if (!leerkracht) {
+              return res.json({ error: 'Paswoord token is ongeldig of verlopen.' });
+            }
+            if (!req.body.newPassword1 || !req.body.newPassword2) {
+                return res.json({ error: 'Vul aub alle velden in' });
+            }
+            if (req.body.newPassword1 != req.body.newPassword2) {
+                return res.json({ error: 'wachtwoorden waren niet identiek' });
+            }
+
+            leerkracht.password =leerkracht.generateHash( req.body.password1);
+            leerkracht.resetPasswordToken = undefined;
+            leerkracht.resetPasswordExpires = undefined;
+
+            leerkracht.save(function(err) {
+              req.logIn(leerkracht, function(err) {
+  		            if (err) {
+  		                return res.json(err);
+  		            }
+  		            return res.json({ redirect: '/BeheerLessen' });
+  		        });
+            });
+          });
+        },
+        function(leerkracht, done) {
+          var smtpTransport = nodemailer.createTransport('SMTP', {
+            service: 'hotmail',
+            auth: {
+              user: 'eenbordvolrechten@hotmail.com',
+              pass: '3ea2cloud'
+            }
+          });
+          var mailOptions = {
+            to: leerkracht.email,
+            from: 'eenbordvolrechten@hotmail.com',
+            subject: 'Je paswoord is veranderd',
+            text: 'Hallo,\n\n' +
+              'Dit is een bevestiging dat je paswoord is veranderd.\n'
+          };
+          smtpTransport.sendMail(mailOptions, function(err) {
+            return res.json({ success: 'Je paswoord is veranderd.' });
+            done(err);
+          });
+        }
+      ], function(err) {
+        res.redirect('/');
+      });
+  });
 
 };

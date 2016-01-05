@@ -1,0 +1,34 @@
+<section ng-controller="ResetController">
+    <div class='col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6 login-form-bg'>
+      <div growl></div>
+    <form ng-submit="signup()"
+          style="margin-top:30px;">
+
+          <div class="form-group">
+            <label>nieuw wachtwoord</label>
+            <div class="input-group text-center input-group-lg">
+               <span class="input-group-addon" id="basic-addon1">
+                  <i class="glyphicon glyphicon-asterisk"></i>
+               </span>
+              <input type="password"
+                     class="form-control"
+                     placeholder="Paswoord"
+                     ng-model="password1"></input>
+                   </div>
+          </div>
+          <div class="form-group">
+            <label >bevestig wachtwoord</label>
+            <div class="input-group text-center input-group-lg">
+               <span class="input-group-addon" id="basic-addon1">
+                  <i class="glyphicon glyphicon-asterisk"></i>
+               </span>
+              <input type="password"
+                     class="form-control"
+                     placeholder="Paswoord"
+                     ng-model="password2"></input>
+                   </div>
+          </div>
+          </form>
+    <button class="btn btn-warning" ng-click="resetPassword()">Wijzig wachtwoord</button>
+</div>
+</section>

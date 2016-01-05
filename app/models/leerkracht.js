@@ -43,7 +43,9 @@ var leerkrachtSchema=new Schema({
   lastname : {type : String, required: true},
   email : {type : String, required: true, index: { unique: true },match: [/.+\@.+\..+/, "Please fill a valid e-mail address"]},
   password: {type: String,required: true},
-  lessen:[lesSchema]
+  lessen:[lesSchema],
+  resetPasswordToken: String,
+ resetPasswordExpires: Date
 },{ collection: 'leerkrachten' });
 
 

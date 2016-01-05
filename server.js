@@ -13,6 +13,12 @@ var passport = require('passport');
 var morgan       = require('morgan');
 var session      = require('express-session');
 
+//for password forgot
+var nodemailer = require('nodemailer');
+var crypto = require('crypto');
+var async = require('async');
+
+
 var db = require('./config/db');// config files
 // configuration ===========================================
 
@@ -48,6 +54,7 @@ require('./app/routes/loginRoutes')(app, passport); // configure our routes
 require('./app/routes/vragenRoutes')(app, passport); // configure our routes
 require('./app/routes/presentatieRoutes')(app, passport); // configure our routes
 require('./app/routes/antwoordRoutes')(app, passport); // configure our routes
+require('./app/routes/forgotRoutes')(app, passport,nodemailer,crypto,async); // configure our routes
 
 
 // start app ===============================================

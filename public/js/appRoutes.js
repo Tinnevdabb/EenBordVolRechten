@@ -19,6 +19,10 @@
             templateUrl: 'views/SignUp.html',
             controller: 'SignupController'
         })
+        .when('/Forgot', {
+            templateUrl: 'views/Forgot.html',
+            controller: 'ForgotController'
+        })
 
         .when('/InlogLeerling', {
             templateUrl: 'views/InlogLeerling.html',

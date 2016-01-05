@@ -1,0 +1,34 @@
+<section ng-controller="SignupController">
+
+  <a href="/"  class="btn btn-default">Home</a>
+
+          <h1 class='col-md-12 text-center'>Wachtwoord vergeten?</h1>
+          <div class='col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6 login-form-bg'>
+              <div growl></div>
+
+
+              <form ng-submit="forgot()" method="post"
+                    style="margin-top:30px;">
+
+                      <div class="form-group">
+                        <div class="input-group text-center input-group-lg">
+                           <span class="input-group-addon" id="basic-addon1">
+                              <i class="glyphicon glyphicon-envelope"></i>
+                           </span>
+                            <input type="text"
+                                   class="form-control"
+                                   placeholder="email"
+                                   ng-model="email"></input>
+                        </div>
+                      </div>
+
+                  <div class="form-group text-center">
+                    <button type="submit" class="btn btn-default btn-lg btn-block">reset wachtwoord</button>
+                  </div>
+
+              </form>
+
+
+      </div>
+
+      </section>

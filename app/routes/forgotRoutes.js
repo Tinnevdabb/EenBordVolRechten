@@ -77,9 +77,7 @@ app.post('/reset/:token', function(req, res) {
 
             leerkracht.save(function(err) {
               req.logIn(leerkracht, function(err) {
-  		            if (err) {
-  		                return res.json(err);
-  		            }
+  		             done(err, leerkracht);
 
   		        });
             });
@@ -101,13 +99,14 @@ app.post('/reset/:token', function(req, res) {
               'Dit is een bevestiging dat je paswoord is veranderd.\n'
           };
           smtpTransport.sendMail(mailOptions, function(err) {
-            return res.json({ success: 'Je paswoord is veranderd.' });
+            return res.json({ redirect: '/BeheerLessen' });
             done(err);
           });
         }
       ], function(err) {
-          return res.json({ redirect: '/BeheerLessen' });
+        return res.json({ redirect: '/' });
       });
+
   });
 
 };

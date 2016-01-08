@@ -80,7 +80,7 @@ app.post('/reset/:token', function(req, res) {
   		            if (err) {
   		                return res.json(err);
   		            }
-  		            return res.json({ redirect: '/BeheerLessen' });
+
   		        });
             });
           });
@@ -106,7 +106,7 @@ app.post('/reset/:token', function(req, res) {
           });
         }
       ], function(err) {
-        res.redirect('/');
+          return res.json({ redirect: '/BeheerLessen' });
       });
   });
 

@@ -25,6 +25,7 @@ var amount=0;
                       opl: oplossing.oplossing,
                       aantal:amount
                   });
+                  amount=0;
                   console.log($scope.results);
           });
 

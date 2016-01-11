@@ -1,18 +1,8 @@
 <section  ng-controller="LeerkrachtPresentatieCloudController">
  <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6 login-form-bg">
   <h1>{{vraag.vraag}}</h1>
-  <div ng-show="video" >
-   <!-- 4:3 aspect ratio -->
-   <div class="embed-responsive embed-responsive-4by3">
-     <iframe class="embed-responsive-item" src="{{trustSrc(vraag.video)}}"></iframe>
-   </div>
-</div>
 
-
-    <div ng-show="afbeelding" >
-   <img scr="{{vraag.afbeelding}}" width="auto" height="auto" >
-  </div>
-    <jqcloud words="words" width="auto" height="auto" steps="7"></jqcloud>
+    <jqcloud words="words" width="200" height="200" steps="7"></jqcloud>
     <button ng-click="getAnswers()" class="btn btn-default btn-sm">Get Anwsers</button>
   <div>
 </section>
